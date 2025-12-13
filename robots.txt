@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Block Easter egg files
+Disallow: /ee.js
+Disallow: /.emro_hidden
