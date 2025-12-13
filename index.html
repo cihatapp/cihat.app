@@ -120,13 +120,21 @@
     <!-- Easter egg image data (not accessible via direct URL) -->
     <script src="ee.js"></script>
     <script>
-        // Easter Egg - 5 clicks to reveal
+        // Easter Egg - 5 taps/clicks to reveal (mobile + desktop)
         let clickCount = 0;
         let clickTimer = null;
         let easterEggLoaded = false;
+        let lastTap = 0;
 
-        document.addEventListener('click', function(e) {
+        function handleTap(e) {
+            // Prevent double-count from touch + click
+            const now = Date.now();
+            if (now - lastTap < 100) return;
+            lastTap = now;
+
             if (e.target.closest('#easter-egg-overlay')) return;
+            if (e.target.closest('button')) return;
+            if (e.target.closest('a')) return;
 
             clickCount++;
             clearTimeout(clickTimer);
@@ -144,7 +152,11 @@
                 document.getElementById('easter-egg-overlay').classList.add('active');
                 clickCount = 0;
             }
-        });
+        }
+
+        // Listen to both click and touchend for mobile compatibility
+        document.addEventListener('click', handleTap);
+        document.addEventListener('touchend', handleTap);
 
         function closeEasterEgg() {
             document.getElementById('easter-egg-overlay').classList.remove('active');
