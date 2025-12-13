@@ -359,3 +359,54 @@ html[lang="en"] .tr {
     background: var(--text);
     color: var(--bg);
 }
+
+/* Easter Egg Overlay */
+.easter-egg-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.easter-egg-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.easter-egg-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.easter-egg-image img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.easter-egg-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    line-height: 1;
+}
+
+.easter-egg-close:hover {
+    opacity: 1;
+}

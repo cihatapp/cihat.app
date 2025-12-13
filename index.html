@@ -111,7 +111,49 @@
         </footer>
     </div>
 
+    <!-- Hidden Easter Egg Overlay -->
+    <div id="easter-egg-overlay" class="easter-egg-overlay">
+        <div class="easter-egg-image"></div>
+        <button class="easter-egg-close" onclick="closeEasterEgg()">&times;</button>
+    </div>
+
+    <!-- Easter egg image data (not accessible via direct URL) -->
+    <script src="ee.js"></script>
     <script>
+        // Easter Egg - 5 clicks to reveal
+        let clickCount = 0;
+        let clickTimer = null;
+        let easterEggLoaded = false;
+
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('#easter-egg-overlay')) return;
+
+            clickCount++;
+            clearTimeout(clickTimer);
+            clickTimer = setTimeout(() => { clickCount = 0; }, 3000);
+
+            if (clickCount >= 5) {
+                if (!easterEggLoaded) {
+                    const imgContainer = document.querySelector('.easter-egg-image');
+                    const img = document.createElement('img');
+                    img.src = EASTER_EGG_DATA;
+                    img.alt = '';
+                    imgContainer.appendChild(img);
+                    easterEggLoaded = true;
+                }
+                document.getElementById('easter-egg-overlay').classList.add('active');
+                clickCount = 0;
+            }
+        });
+
+        function closeEasterEgg() {
+            document.getElementById('easter-egg-overlay').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeEasterEgg();
+        });
+
         function setLang(lang) {
             document.documentElement.lang = lang;
             localStorage.setItem('lang', lang);
