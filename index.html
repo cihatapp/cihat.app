@@ -1,44 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cihat">
-    <title></title>
-    <link rel="stylesheet" href="./css/main.css">
+    <title>Cihat Karaboga</title>
+    <meta name="description" content="Cihat Karaboga - Mobile app coming soon. Android & iOS.">
+    <meta name="color-scheme" content="dark light">
 
-    <!-- Font Family -->
+    <!-- Google Fonts - Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Set Icon set -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
 
-    <script type="text/javascript">
-        text = "Cihat Karaboğa - Mobile Application Developer ";
-        function step() {
-            text = text.substr(1) + text.substr(0,1);
-            document.title = text.substr(0,30);
-        }
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Prevent flash of wrong theme -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const savedLang = localStorage.getItem('lang');
+
+            // Theme: saved > system preference
+            if (savedTheme) {
+                document.documentElement.dataset.theme = savedTheme;
+            } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.documentElement.dataset.theme = 'light';
+            }
+
+            // Language: saved > browser language
+            if (savedLang) {
+                document.documentElement.lang = savedLang;
+            } else {
+                const browserLang = navigator.language.slice(0, 2);
+                document.documentElement.lang = browserLang === 'tr' ? 'tr' : 'en';
+            }
+        })();
     </script>
 </head>
-<body class="bg" onload="setInterval(step,200)">
+<body>
+    <div class="container">
+        <!-- Controls -->
+        <nav class="controls">
+            <!-- Language Switcher -->
+            <div class="lang-switch">
+                <button class="lang-btn" data-lang="tr" onclick="setLang('tr')">TR</button>
+                <span class="divider">/</span>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+            </div>
 
-    <img src="./assets/profile_image.jpeg" alt="profile_image" class="avatar">
+            <!-- Theme Switcher -->
+            <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </nav>
 
-    <div class="name"><p>Cihat Karaboğa</p></div>
+        <!-- Main content -->
+        <main class="content">
+            <h1 class="logo">Cihat Karaboga</h1>
 
-    <div class="desc"><pre>
-Mobile Developer with experience Flutter.
-I’m a software engineer student.
-Part time musician.</pre></div>
+            <p class="tagline">
+                <span class="tr">Mobil uygulama geliştiriyorum</span>
+                <span class="en">Building a mobile app</span>
+            </p>
 
-<div class="buttons">  
-    <a href="https://www.linkedin.com/in/chtkb/" class="fa fa-linkedin" target="_blank"></a>
-    <a href="https://github.com/hesty" class="fa fa-github"   target="_blank"></a>
-    <a href="https://twitter.com/hestydev" class="fa fa-twitter"  target="_blank"></a>
-</div>
+            <h2 class="coming-soon">Coming Soon</h2>
 
+            <!-- Platform badges with animated cursor -->
+            <div class="platforms">
+                <div class="platform android">
+                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-1.44-.64-3.06-.99-4.77-.99s-3.33.35-4.77.99L5.09 5.67c-.18-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85l1.84 3.18c-2.93 1.59-4.94 4.55-5.27 8.02h22.86c-.33-3.47-2.34-6.43-5.27-8.02zM9 14c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
+                    </svg>
+                    <span>Android</span>
+                </div>
+
+                <!-- Animated cursor -->
+                <div class="cursor-wrapper">
+                    <svg class="cursor" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 2l16 12-7 2-4 7-1-9-4-12z"/>
+                    </svg>
+                </div>
+
+                <div class="platform ios">
+                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <span>iOS</span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>
+                <span class="tr">&copy; 2025 Cihat Karaboga. Tüm hakları saklıdır.</span>
+                <span class="en">&copy; 2025 Cihat Karaboga. All rights reserved.</span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem('lang', lang);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.dataset.theme;
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.dataset.theme = next;
+            localStorage.setItem('theme', next);
+        }
+    </script>
 </body>
 </html>
