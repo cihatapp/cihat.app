@@ -21,13 +21,15 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /home/public_html/
+          server-dir: /public_html/
           local-dir: ./
+          protocol: ftp
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
             **/.vscode/**
             **/.claude/**
+            **/.github/**
             **/.DS_Store
-            **/sftp.json
+            **/*.md
