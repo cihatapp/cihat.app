@@ -1,0 +1,329 @@
+/* ===================================
+   cihat.app - Coming Soon
+   Minimal Design with Dark/Light Theme
+   =================================== */
+
+/* Dark Theme (Default) */
+:root,
+[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --text: #ffffff;
+    --text-muted: #666666;
+    --border: #222222;
+    --android: #3ddc84;
+    --ios: #ffffff;
+    --cursor: #ff6b00;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg: #ffffff;
+    --text: #0a0a0a;
+    --text-muted: #666666;
+    --border: #e5e5e5;
+    --android: #3ddc84;
+    --ios: #000000;
+    --cursor: #ff6b00;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    color-scheme: dark light;
+}
+
+body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Container */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Controls (Language + Theme) */
+.controls {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s ease;
+    letter-spacing: 0.05em;
+}
+
+.lang-btn:hover {
+    color: var(--text);
+}
+
+html[lang="tr"] .lang-btn[data-lang="tr"],
+html[lang="en"] .lang-btn[data-lang="en"] {
+    color: var(--text);
+}
+
+.divider {
+    color: var(--border);
+    font-size: 0.875rem;
+}
+
+/* Theme Button */
+.theme-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.theme-btn:hover {
+    border-color: var(--text-muted);
+}
+
+.theme-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Show/hide sun/moon based on theme */
+[data-theme="dark"] .icon-sun {
+    display: block;
+}
+[data-theme="dark"] .icon-moon {
+    display: none;
+}
+[data-theme="light"] .icon-sun {
+    display: none;
+}
+[data-theme="light"] .icon-moon {
+    display: block;
+}
+
+/* Language visibility */
+html[lang="tr"] .en,
+html[lang="en"] .tr {
+    display: none;
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+/* Logo */
+.logo {
+    font-size: clamp(3rem, 12vw, 7rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.logo .accent {
+    color: var(--text-muted);
+}
+
+/* Tagline */
+.tagline {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Coming Soon */
+.coming-soon {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 1rem 0;
+}
+
+/* Platforms */
+.platforms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.platform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s ease;
+}
+
+.platform:hover {
+    border-color: var(--text-muted);
+}
+
+.platform.android:hover {
+    border-color: var(--android);
+}
+
+.platform.ios:hover {
+    border-color: var(--ios);
+}
+
+.platform-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.platform.android .platform-icon {
+    color: var(--android);
+}
+
+.platform.ios .platform-icon {
+    color: var(--ios);
+}
+
+.platform span {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Animated Cursor */
+.cursor-wrapper {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cursor {
+    width: 24px;
+    height: 24px;
+    color: var(--cursor);
+    animation: cursorMove 3s ease-in-out infinite;
+    transform-origin: top left;
+}
+
+@keyframes cursorMove {
+    0%, 100% {
+        transform: translateX(-20px) rotate(-5deg);
+    }
+    50% {
+        transform: translateX(20px) rotate(5deg);
+    }
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 0 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .controls {
+        top: 1.5rem;
+        right: 1.5rem;
+        gap: 1rem;
+    }
+
+    .theme-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .platforms {
+        gap: 0.75rem;
+    }
+
+    .platform {
+        padding: 1rem 1.25rem;
+    }
+
+    .cursor-wrapper {
+        width: 24px;
+        height: 24px;
+    }
+
+    .cursor {
+        width: 18px;
+        height: 18px;
+        animation: cursorMoveMobile 3s ease-in-out infinite;
+    }
+}
+
+@keyframes cursorMoveMobile {
+    0%, 100% {
+        transform: translateX(-12px) rotate(-5deg);
+    }
+    50% {
+        transform: translateX(12px) rotate(5deg);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Selection */
+::selection {
+    background: var(--text);
+    color: var(--bg);
+}
