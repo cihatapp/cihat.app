@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cihat Karaboga</title>
-    <meta name="description" content="Cihat Karaboga - Mobile app coming soon. Android & iOS.">
+    <title>Cihat Karaboga | Software Engineer</title>
+    <meta name="description" content="Cihat Karaboga - Software Engineer & Mobile Developer with 4+ years of experience building cross-platform applications for iOS and Android.">
     <meta name="color-scheme" content="dark light">
+    <meta name="author" content="Cihat Karaboga">
+    <meta name="keywords" content="Flutter, Dart, Mobile Developer, iOS, Android, Cross-platform, Software Engineer">
 
-    <!-- Google Fonts - Space Grotesk -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cihat Karaboga | Software Engineer">
+    <meta property="og:description" content="Software Engineer & Mobile Developer with 4+ years of experience">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cihat.app">
+
+    <!-- Google Fonts - Space Grotesk + Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'%3E%3Crect x='32' y='32' width='448' height='448' rx='64' fill='none' stroke='%23000000' stroke-width='32'/%3E%3Cpath d='M224 160 L128 256 L224 352' fill='none' stroke='%23000000' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M288 160 L384 256 L288 352' fill='none' stroke='%23000000' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cline x1='256' y1='160' x2='256' y2='352' fill='none' stroke='%23000000' stroke-width='32' stroke-linecap='round'/%3E%3C/svg%3E">
@@ -22,15 +30,11 @@
         (function() {
             const savedTheme = localStorage.getItem('theme');
             const savedLang = localStorage.getItem('lang');
-
-            // Theme: saved > system preference
             if (savedTheme) {
                 document.documentElement.dataset.theme = savedTheme;
             } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
                 document.documentElement.dataset.theme = 'light';
             }
-
-            // Language: saved > browser language
             if (savedLang) {
                 document.documentElement.lang = savedLang;
             } else {
@@ -41,17 +45,42 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <!-- Controls -->
-        <nav class="controls">
-            <!-- Language Switcher -->
+    <!-- Floating Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#hero" class="nav-logo">
+            <span class="logo-text">CK</span>
+            <span class="logo-dot"></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about" class="nav-link">
+                <span class="tr">Hakkımda</span>
+                <span class="en">About</span>
+            </a>
+            <a href="#experience" class="nav-link">
+                <span class="tr">Deneyim</span>
+                <span class="en">Experience</span>
+            </a>
+            <a href="#skills" class="nav-link">
+                <span class="tr">Yetenekler</span>
+                <span class="en">Skills</span>
+            </a>
+            <a href="#contact" class="nav-link">
+                <span class="tr">İletişim</span>
+                <span class="en">Contact</span>
+            </a>
+        </div>
+        <div class="nav-controls">
             <div class="lang-switch">
                 <button class="lang-btn" data-lang="tr" onclick="setLang('tr')">TR</button>
                 <span class="divider">/</span>
                 <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
             </div>
-
-            <!-- Theme Switcher -->
             <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
@@ -61,58 +90,664 @@
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                 </svg>
             </button>
-        </nav>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
 
-        <!-- Main content -->
-        <main class="content">
-            <h1 class="logo">Cihat Karaboga</h1>
-
-            <p class="tagline">
-                <span class="tr">Mobil uygulama geliştiriyorum</span>
-                <span class="en">Building a mobile app</span>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge reveal">
+                <div class="badge-glow"></div>
+                <span class="tr">Merhaba, ben</span>
+                <span class="en">Hello, I'm</span>
+            </div>
+            <h1 class="hero-title reveal">
+                <span class="hero-name" data-text="Cihat">Cihat</span>
+                <span class="hero-name accent" data-text="Karaboga">Karaboga</span>
+            </h1>
+            <div class="hero-subtitle reveal">
+                <span class="typing-text" id="typingText"></span>
+                <span class="cursor">|</span>
+            </div>
+            <p class="hero-description reveal">
+                <span class="tr">iOS ve Android için yüksek performanslı mobil uygulamalar geliştiren 4+ yıllık deneyimli yazılım mühendisi.</span>
+                <span class="en">Software engineer with 4+ years of experience building high-performance mobile applications for iOS and Android.</span>
             </p>
+            <div class="hero-cta reveal">
+                <a href="#contact" class="btn btn-primary">
+                    <span class="btn-text">
+                        <span class="tr">İletişime Geç</span>
+                        <span class="en">Get in Touch</span>
+                    </span>
+                    <span class="btn-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </span>
+                </a>
+                <a href="#experience" class="btn btn-outline">
+                    <span class="tr">Deneyimimi Gör</span>
+                    <span class="en">View Experience</span>
+                </a>
+            </div>
+            <div class="hero-social reveal">
+                <a href="https://github.com/cihatapp" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/chtkb/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://x.com/cihatapp" target="_blank" rel="noopener" class="social-link" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="flutter-orbit">
+                <svg class="flutter-icon" viewBox="0 0 256 317">
+                    <polygon fill="#47C5FB" points="157.67,0 0,157.67 48.8,206.47 255.27,0"/>
+                    <polygon fill="#47C5FB" points="156.57,145.4 72.15,229.82 121.13,279.53 169.84,230.82 255.27,145.4"/>
+                    <polygon fill="#00569E" points="121.13,279.53 158.21,316.61 255.27,316.61 169.84,230.82"/>
+                    <polygon fill="#00B5F8" points="71.6,230.36 120.4,181.56 169.84,230.82 121.13,279.53"/>
+                </svg>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-text">
+                <span class="tr">Aşağı Kaydır</span>
+                <span class="en">Scroll Down</span>
+            </span>
+            <div class="scroll-line">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
 
-            <h2 class="coming-soon">
-                <span class="tr">Çok Yakında</span>
-                <span class="en">Coming Soon</span>
-            </h2>
-
-            <!-- Platform badges with animated cursor -->
-            <div class="platforms">
-                <div class="platform android">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24c-1.44-.64-3.06-.99-4.77-.99s-3.33.35-4.77.99L5.09 5.67c-.18-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85l1.84 3.18c-2.93 1.59-4.94 4.55-5.27 8.02h22.86c-.33-3.47-2.34-6.43-5.27-8.02zM9 14c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm6 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/>
-                    </svg>
-                    <span>Android</span>
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">
+                    <span class="tr">01 // Hakkımda</span>
+                    <span class="en">01 // About Me</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="tr">Yazılım Mühendisi</span>
+                    <span class="en">Software Engineer</span>
+                </h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="about-text reveal">
+                        <span class="tr">4+ yıllık deneyime sahip Flutter ve Dart uzmanıyım. Kullanıcı dostu ve yüksek performanslı çapraz platform mobil uygulamalar geliştiriyorum. Yazılım tasarımı, test ve dağıtım konularında uzmanlaşarak ekiplerle mükemmel iş birliği yapıyorum.</span>
+                        <span class="en">A Flutter and Dart expert with 4+ years of experience developing cross-platform mobile applications. Skilled in software design, testing, and deployment, focusing on creating user-friendly and high-performance apps. Excellent at collaborating within teams and leveraging back-end technologies.</span>
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item reveal">
+                            <div class="stat-number-wrapper">
+                                <span class="stat-number" data-count="4">0</span>
+                                <span class="stat-suffix">+</span>
+                            </div>
+                            <span class="stat-label">
+                                <span class="tr">Yıl Deneyim</span>
+                                <span class="en">Years Experience</span>
+                            </span>
+                        </div>
+                        <div class="stat-item reveal">
+                            <div class="stat-number-wrapper">
+                                <span class="stat-number" data-count="99">0</span>
+                                <span class="stat-suffix">%</span>
+                            </div>
+                            <span class="stat-label">
+                                <span class="tr">Crash-Free Oran</span>
+                                <span class="en">Crash-Free Rate</span>
+                            </span>
+                        </div>
+                        <div class="stat-item reveal">
+                            <div class="stat-number-wrapper">
+                                <span class="stat-number" data-count="10">0</span>
+                                <span class="stat-suffix">K+</span>
+                            </div>
+                            <span class="stat-label">
+                                <span class="tr">Günlük Kullanıcı</span>
+                                <span class="en">Daily Users</span>
+                            </span>
+                        </div>
+                        <div class="stat-item reveal">
+                            <div class="stat-number-wrapper">
+                                <span class="stat-number" data-count="1.2">0</span>
+                                <span class="stat-suffix">s</span>
+                            </div>
+                            <span class="stat-label">
+                                <span class="tr">Uygulama Başlatma</span>
+                                <span class="en">App Startup</span>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Flutter icon -->
-                <div class="flutter-wrapper">
-                    <svg class="flutter-icon" viewBox="0 0 256 317">
-                        <polygon fill="#47C5FB" points="157.67,0 0,157.67 48.8,206.47 255.27,0"/>
-                        <polygon fill="#47C5FB" points="156.57,145.4 72.15,229.82 121.13,279.53 169.84,230.82 255.27,145.4"/>
-                        <polygon fill="#00569E" points="121.13,279.53 158.21,316.61 255.27,316.61 169.84,230.82"/>
-                        <polygon fill="#00B5F8" points="71.6,230.36 120.4,181.56 169.84,230.82 121.13,279.53"/>
-                    </svg>
-                </div>
-
-                <div class="platform ios">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                    </svg>
-                    <span>iOS</span>
+                <div class="about-info">
+                    <div class="info-card reveal">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">
+                                <span class="tr">Telefon</span>
+                                <span class="en">Phone</span>
+                            </span>
+                            <a href="tel:+905455517250" class="info-value">+90 545 551 72 50</a>
+                        </div>
+                    </div>
+                    <div class="info-card reveal">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Email</span>
+                            <a href="mailto:dev@cihat.app" class="info-value">dev@cihat.app</a>
+                        </div>
+                    </div>
+                    <div class="info-card reveal">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">
+                                <span class="tr">Konum</span>
+                                <span class="en">Location</span>
+                            </span>
+                            <span class="info-value">Istanbul, Turkey</span>
+                        </div>
+                    </div>
+                    <div class="info-card reveal">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">
+                                <span class="tr">Eğitim</span>
+                                <span class="en">Education</span>
+                            </span>
+                            <span class="info-value">Fırat University - Software Eng. (GPA: 3.23)</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>
-                <span class="tr">&copy; 2025 Cihat Karaboga. Tüm hakları saklıdır.</span>
-                <span class="en">&copy; 2025 Cihat Karaboga. All rights reserved.</span>
+    <!-- Experience Section -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">
+                    <span class="tr">02 // İş Deneyimi</span>
+                    <span class="en">02 // Work Experience</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="tr">Kariyer Yolculuğum</span>
+                    <span class="en">Career Journey</span>
+                </h2>
+            </div>
+            <div class="timeline">
+                <!-- Altur Teknoloji -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3 class="timeline-title">Mobile Developer</h3>
+                                <span class="timeline-company">Altur Teknoloji</span>
+                            </div>
+                            <span class="timeline-date">
+                                <span class="tr">Temmuz 2025 – Şu an</span>
+                                <span class="en">July 2025 – Present</span>
+                            </span>
+                        </div>
+                        <ul class="timeline-list">
+                            <li>
+                                <span class="tr">"Sağlıklı Sürüş" uygulamasının konseptten lansmana kadar tüm full-stack geliştirmesini tek başıma yürüttüm.</span>
+                                <span class="en">Spearheaded the end-to-end, solo development of the "Sağlıklı Sürüş" (Healthy Driving) application from concept to launch.</span>
+                            </li>
+                            <li>
+                                <span class="tr">Flutter (iOS/Android), .NET backend ve Vue.js frontend ile kapsamlı bir çözüm geliştirdim.</span>
+                                <span class="en">Engineered a comprehensive solution using Flutter for cross-platform mobile app, .NET backend, and Vue.js frontend.</span>
+                            </li>
+                            <li>
+                                <span class="tr">Gerçek zamanlı sürücü kalp atışı izleme özelliğini implemente ettim.</span>
+                                <span class="en">Implemented core functionality for real-time driver heart rate monitoring.</span>
+                            </li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">.NET</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">IoT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bookcars -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3 class="timeline-title">Mobile Developer</h3>
+                                <span class="timeline-company">Bookcars.com</span>
+                            </div>
+                            <span class="timeline-date">
+                                <span class="tr">Mart 2023 – Aralık 2024</span>
+                                <span class="en">March 2023 – December 2024</span>
+                            </span>
+                        </div>
+                        <ul class="timeline-list">
+                            <li>
+                                <span class="tr">Android, iOS ve Huawei için tek Flutter kod tabanından flavor bazlı uygulama geliştirdim.</span>
+                                <span class="en">Developed flavor-based, cross-platform application for Android, iOS, and Huawei from a single Flutter codebase.</span>
+                            </li>
+                            <li>
+                                <span class="tr">Firebase A/B testi ve ödeme optimizasyonları ile rezervasyon süresini 30 saniyenin altına düşürdüm.</span>
+                                <span class="en">Reduced booking time to under 30 seconds through Firebase A/B testing and payment optimizations.</span>
+                            </li>
+                            <li>
+                                <span class="tr">%99.5 crash-free oranı ve 1.2s uygulama başlatma süresi elde ettim.</span>
+                                <span class="en">Achieved 99.5% crash-free session rate and 1.2s app startup time.</span>
+                            </li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Strapi CMS</span>
+                            <span class="tech-tag">Stripe</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yolcu360 -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3 class="timeline-title">Mobile Developer</h3>
+                                <span class="timeline-company">Yolcu360</span>
+                            </div>
+                            <span class="timeline-date">
+                                <span class="tr">Ocak 2022 – Aralık 2024</span>
+                                <span class="en">January 2022 – December 2024</span>
+                            </span>
+                        </div>
+                        <ul class="timeline-list">
+                            <li>
+                                <span class="tr">3. parti pazarlama aracı entegrasyonu ile DAU'da %20, gelirde %15 artış sağladım.</span>
+                                <span class="en">Led integration of third-party marketing tool, resulting in 20% increase in DAU and 15% boost in app revenue.</span>
+                            </li>
+                            <li>
+                                <span class="tr">Push notifications, REST API entegrasyonları ve deep linking özelliklerini geliştirdim.</span>
+                                <span class="en">Developed core features including push notifications, REST API integrations, and platform-specific deep linking.</span>
+                            </li>
+                            <li>
+                                <span class="tr">10,000+ DAU üzerinde %99+ crash-free oranı sağladım.</span>
+                                <span class="en">Maintained 99%+ crash-free session rate across 10,000+ DAU.</span>
+                            </li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">REST API</span>
+                            <span class="tech-tag">Deep Linking</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KB Yazılım -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3 class="timeline-title">Jr. Mobile Developer</h3>
+                                <span class="timeline-company">KB Yazılım</span>
+                            </div>
+                            <span class="timeline-date">
+                                <span class="tr">Şubat 2021 – Ocak 2022</span>
+                                <span class="en">February 2021 – January 2022</span>
+                            </span>
+                        </div>
+                        <ul class="timeline-list">
+                            <li>
+                                <span class="tr">Dynobil Ekspertiz için iki B2B Flutter uygulamasının tüm yaşam döngüsünü yönettim.</span>
+                                <span class="en">Independently led full development lifecycle of two B2B Flutter applications for Dynobil Ekspertiz.</span>
+                            </li>
+                            <li>
+                                <span class="tr">Kanban metodolojisi ile geliştirme süresini %25 kısalttım.</span>
+                                <span class="en">Implemented Kanban methodology resulting in 25% reduction in development lead times.</span>
+                            </li>
+                            <li>
+                                <span class="tr">5,000+ günlük oturumu %1'den az crash oranıyla destekledim.</span>
+                                <span class="en">Supported over 5,000 daily sessions with crash rate of less than 1%.</span>
+                            </li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">MVC</span>
+                            <span class="tech-tag">MVVM</span>
+                            <span class="tech-tag">Kanban</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favrea -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3 class="timeline-title">Jr. Mobile Developer</h3>
+                                <span class="timeline-company">Favrea <span class="timeline-badge">Part-time</span></span>
+                            </div>
+                            <span class="timeline-date">
+                                <span class="tr">Ekim 2020 – Ocak 2022</span>
+                                <span class="en">October 2020 – January 2022</span>
+                            </span>
+                        </div>
+                        <ul class="timeline-list">
+                            <li>
+                                <span class="tr">Flutter frontend ve Firebase backend ile sıfırdan sosyal medya uygulaması geliştirdim.</span>
+                                <span class="en">Architected and developed a social media application from scratch using Flutter and Firebase.</span>
+                            </li>
+                            <li>
+                                <span class="tr">Ekibi 3 mühendise ölçeklendirip iOS ve Android'de başarılı lansman gerçekleştirdim.</span>
+                                <span class="en">Scaled the team to three engineers and led to successful launch on iOS and Android stores.</span>
+                            </li>
+                        </ul>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Social Media</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">
+                    <span class="tr">03 // Yetenekler</span>
+                    <span class="en">03 // Skills</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="tr">Teknik Uzmanlık</span>
+                    <span class="en">Technical Expertise</span>
+                </h2>
+            </div>
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-category reveal">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3 class="skill-category-title">
+                            <span class="tr">Programlama Dilleri</span>
+                            <span class="en">Programming Languages</span>
+                        </h3>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Dart</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Kotlin</span>
+                                <span class="skill-percent">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Swift</span>
+                                <span class="skill-percent">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="65"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percent">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">C#</span>
+                                <span class="skill-percent">60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="60"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="skill-category reveal">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        </div>
+                        <h3 class="skill-category-title">
+                            <span class="tr">Framework & State Management</span>
+                            <span class="en">Frameworks & State Management</span>
+                        </h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="expert">Flutter</span>
+                        <span class="skill-tag" data-level="advanced">BLoC</span>
+                        <span class="skill-tag" data-level="advanced">Riverpod</span>
+                        <span class="skill-tag" data-level="advanced">Provider</span>
+                        <span class="skill-tag" data-level="intermediate">GetX</span>
+                        <span class="skill-tag" data-level="intermediate">MobX</span>
+                        <span class="skill-tag" data-level="intermediate">Fer</span>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-category reveal">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h3 class="skill-category-title">
+                            <span class="tr">Araçlar & Platformlar</span>
+                            <span class="en">Tools & Platforms</span>
+                        </h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="expert">Firebase</span>
+                        <span class="skill-tag" data-level="advanced">CI/CD</span>
+                        <span class="skill-tag" data-level="expert">Git/GitHub</span>
+                        <span class="skill-tag" data-level="advanced">VS Code</span>
+                        <span class="skill-tag" data-level="advanced">Android Studio</span>
+                        <span class="skill-tag" data-level="intermediate">Xcode</span>
+                        <span class="skill-tag" data-level="intermediate">Figma</span>
+                    </div>
+                </div>
+
+                <!-- Core Competencies -->
+                <div class="skill-category reveal">
+                    <div class="skill-category-header">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <h3 class="skill-category-title">
+                            <span class="tr">Temel Yetkinlikler</span>
+                            <span class="en">Core Competencies</span>
+                        </h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="expert">Cross-platform Development</span>
+                        <span class="skill-tag" data-level="advanced">API Integration</span>
+                        <span class="skill-tag" data-level="advanced">Unit Testing</span>
+                        <span class="skill-tag" data-level="advanced">UI/UX Design</span>
+                        <span class="skill-tag" data-level="advanced">Responsive Design</span>
+                        <span class="skill-tag" data-level="advanced">Clean Architecture</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">
+                    <span class="tr">04 // İletişim</span>
+                    <span class="en">04 // Contact</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="tr">Birlikte Çalışalım</span>
+                    <span class="en">Let's Work Together</span>
+                </h2>
+            </div>
+            <p class="section-subtitle reveal">
+                <span class="tr">Yeni projeler ve fırsatlar için her zaman açığım. Birlikte harika şeyler yaratalım!</span>
+                <span class="en">I'm always open for new projects and opportunities. Let's create something amazing together!</span>
             </p>
-        </footer>
-    </div>
+            <div class="contact-grid">
+                <a href="mailto:dev@cihat.app" class="contact-card reveal">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3 class="contact-title">Email</h3>
+                    <span class="contact-value">dev@cihat.app</span>
+                    <div class="contact-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+                <a href="tel:+905455517250" class="contact-card reveal">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h3 class="contact-title">
+                        <span class="tr">Telefon</span>
+                        <span class="en">Phone</span>
+                    </h3>
+                    <span class="contact-value">+90 545 551 72 50</span>
+                    <div class="contact-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/chtkb/" target="_blank" rel="noopener" class="contact-card reveal">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </div>
+                    <h3 class="contact-title">LinkedIn</h3>
+                    <span class="contact-value">linkedin.com/in/chtkb</span>
+                    <div class="contact-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+                <a href="https://github.com/cihatapp" target="_blank" rel="noopener" class="contact-card reveal">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </div>
+                    <h3 class="contact-title">GitHub</h3>
+                    <span class="contact-value">github.com/cihatapp</span>
+                    <div class="contact-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">CK</span>
+                    <p class="footer-tagline">
+                        <span class="tr">Yazılım Mühendisi | Mobil Geliştirici</span>
+                        <span class="en">Software Engineer | Mobile Developer</span>
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/cihatapp" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/chtkb/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://x.com/cihatapp" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    <span class="tr">&copy; 2025 Cihat Karaboga. Tüm hakları saklıdır.</span>
+                    <span class="en">&copy; 2025 Cihat Karaboga. All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Hidden Easter Egg Overlay -->
     <div id="easter-egg-overlay" class="easter-egg-overlay">
@@ -120,66 +755,8 @@
         <button class="easter-egg-close" onclick="closeEasterEgg()">&times;</button>
     </div>
 
-    <!-- Easter egg image data (not accessible via direct URL) -->
+    <!-- Easter egg image data -->
     <script src="ee.js"></script>
-    <script>
-        // Easter Egg - 5 taps/clicks to reveal (mobile + desktop)
-        let clickCount = 0;
-        let clickTimer = null;
-        let easterEggLoaded = false;
-        let lastTap = 0;
-
-        function handleTap(e) {
-            // Prevent double-count from touch + click
-            const now = Date.now();
-            if (now - lastTap < 100) return;
-            lastTap = now;
-
-            if (e.target.closest('#easter-egg-overlay')) return;
-            if (e.target.closest('button')) return;
-            if (e.target.closest('a')) return;
-
-            clickCount++;
-            clearTimeout(clickTimer);
-            clickTimer = setTimeout(() => { clickCount = 0; }, 3000);
-
-            if (clickCount >= 5) {
-                if (!easterEggLoaded) {
-                    const imgContainer = document.querySelector('.easter-egg-image');
-                    const img = document.createElement('img');
-                    img.src = EASTER_EGG_DATA;
-                    img.alt = '';
-                    imgContainer.appendChild(img);
-                    easterEggLoaded = true;
-                }
-                document.getElementById('easter-egg-overlay').classList.add('active');
-                clickCount = 0;
-            }
-        }
-
-        // Listen to both click and touchend for mobile compatibility
-        document.addEventListener('click', handleTap);
-        document.addEventListener('touchend', handleTap);
-
-        function closeEasterEgg() {
-            document.getElementById('easter-egg-overlay').classList.remove('active');
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeEasterEgg();
-        });
-
-        function setLang(lang) {
-            document.documentElement.lang = lang;
-            localStorage.setItem('lang', lang);
-        }
-
-        function toggleTheme() {
-            const current = document.documentElement.dataset.theme;
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.dataset.theme = next;
-            localStorage.setItem('theme', next);
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
