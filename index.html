@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,16 +30,13 @@
         (function() {
             const savedTheme = localStorage.getItem('theme');
             const savedLang = localStorage.getItem('lang');
+            // Default: dark theme (only change if user explicitly saved light)
             if (savedTheme) {
                 document.documentElement.dataset.theme = savedTheme;
-            } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-                document.documentElement.dataset.theme = 'light';
             }
+            // Default: English (only change if user explicitly saved Turkish)
             if (savedLang) {
                 document.documentElement.lang = savedLang;
-            } else {
-                const browserLang = navigator.language.slice(0, 2);
-                document.documentElement.lang = browserLang === 'tr' ? 'tr' : 'en';
             }
         })();
     </script>
@@ -113,7 +110,7 @@
             </div>
             <h1 class="hero-title reveal">
                 <span class="hero-name" data-text="Cihat">Cihat</span>
-                <span class="hero-name accent" data-text="Karaboga">Karaboga</span>
+                <span class="hero-name" data-text="Karaboga">Karaboga</span>
             </h1>
             <div class="hero-subtitle reveal">
                 <span class="typing-text" id="typingText"></span>
