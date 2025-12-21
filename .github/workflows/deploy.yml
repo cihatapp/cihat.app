@@ -31,7 +31,7 @@ jobs:
       - name: Deploy to server via rsync
         uses: burnett01/rsync-deployments@7.0.1
         with:
-          switches: -avz --delete --checksum --exclude-from='.rsyncignore'
+          switches: -rlvz --delete --checksum --omit-dir-times --exclude-from='.rsyncignore'
           path: ./
           remote_path: /home/hestiko/htdocs/www.cihat.app/
           remote_host: ${{ secrets.SSH_HOST }}
