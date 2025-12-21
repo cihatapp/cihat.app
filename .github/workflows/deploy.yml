@@ -14,14 +14,41 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Debug - Show files to deploy
+        run: |
+          echo "=== Files in repository ==="
+          ls -la
+          echo ""
+          echo "=== style.css first 5 lines ==="
+          head -5 style.css
+          echo ""
+          echo "=== .rsyncignore content ==="
+          cat .rsyncignore || echo "No .rsyncignore found"
 
       - name: Deploy to server via rsync
         uses: burnett01/rsync-deployments@7.0.1
         with:
-          switches: -rlvz --delete --omit-dir-times --exclude-from='.rsyncignore'
+          switches: -avz --delete --checksum --exclude-from='.rsyncignore'
           path: ./
           remote_path: /home/hestiko/htdocs/www.cihat.app/
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: hestiko
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote_port: 22
+
+      - name: Verify deployment
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: hestiko
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            echo "=== Checking deployed files ==="
+            ls -la /home/hestiko/htdocs/www.cihat.app/
+            echo ""
+            echo "=== style.css first 5 lines on server ==="
+            head -5 /home/hestiko/htdocs/www.cihat.app/style.css
