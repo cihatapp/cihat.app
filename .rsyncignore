@@ -8,3 +8,5 @@
 ee.js
 node_modules
 .rsyncignore
+Screenshot*.png
+*.log
