@@ -85,13 +85,18 @@ function initNavigation() {
 /* ===================================
    TYPING EFFECT
    =================================== */
-let typingTimeoutId = null; // Track timeout to cancel on language change
+let typingTimeoutId = null;
+let currentTypingGeneration = 0; // Unique ID for each animation instance
 
 function initTypingEffect() {
     const typingText = document.getElementById('typingText');
     if (!typingText) return;
 
-    // Clear any existing typing animation
+    // Increment generation to invalidate any running animation
+    currentTypingGeneration++;
+    const thisGeneration = currentTypingGeneration;
+
+    // Clear any pending timeout
     if (typingTimeoutId) {
         clearTimeout(typingTimeoutId);
         typingTimeoutId = null;
@@ -123,6 +128,9 @@ function initTypingEffect() {
     let typingSpeed = 100;
 
     function type() {
+        // Stop if this animation has been superseded
+        if (thisGeneration !== currentTypingGeneration) return;
+
         const currentPhrase = currentPhrases[phraseIndex];
 
         if (isDeleting) {
@@ -147,11 +155,8 @@ function initTypingEffect() {
         typingTimeoutId = setTimeout(type, typingSpeed);
     }
 
-    // Clear any existing typing and start fresh
+    // Clear text and start fresh
     typingText.textContent = '';
-    charIndex = 0;
-    phraseIndex = 0;
-    isDeleting = false;
 
     typingTimeoutId = setTimeout(type, 1000);
 }
