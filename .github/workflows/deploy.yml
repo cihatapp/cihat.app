@@ -1,4 +1,4 @@
-name: Deploy to FTP Server
+name: Deploy to Server via SSH
 
 on:
   push:
@@ -8,28 +8,20 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to FTP
+    name: Deploy via SSH
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Sync files to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy to server via rsync
+        uses: burnett01/rsync-deployments@7.0.1
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/
-          local-dir: ./
-          protocol: ftp
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/.vscode/**
-            **/.claude/**
-            **/.github/**
-            **/.DS_Store
-            **/*.md
+          switches: -avzr --delete --exclude-from='.rsyncignore'
+          path: ./
+          remote_path: /home/hestiko/htdocs/www.cihat.app/
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: hestiko
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_port: ${{ secrets.SSH_PORT }}

@@ -1,0 +1,10 @@
+.git
+.git*
+.github
+.vscode
+.claude
+.DS_Store
+*.md
+ee.js
+node_modules
+.rsyncignore
