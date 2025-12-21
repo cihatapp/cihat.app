@@ -1224,6 +1224,17 @@ a.info-value:hover {
 .skill-tag[data-level="expert"] {
     border-color: var(--accent);
     color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.skill-tag[data-level="advanced"] {
+    border-color: var(--text-secondary);
+    color: var(--text);
+}
+
+.skill-tag[data-level="intermediate"] {
+    border-color: var(--border);
+    color: var(--text-secondary);
 }
 
 /* ===================================
