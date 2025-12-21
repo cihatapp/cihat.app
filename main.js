@@ -85,9 +85,17 @@ function initNavigation() {
 /* ===================================
    TYPING EFFECT
    =================================== */
+let typingTimeoutId = null; // Track timeout to cancel on language change
+
 function initTypingEffect() {
     const typingText = document.getElementById('typingText');
     if (!typingText) return;
+
+    // Clear any existing typing animation
+    if (typingTimeoutId) {
+        clearTimeout(typingTimeoutId);
+        typingTimeoutId = null;
+    }
 
     const lang = document.documentElement.getAttribute('lang') || 'en';
 
@@ -136,7 +144,7 @@ function initTypingEffect() {
             typingSpeed = 500; // Pause before next phrase
         }
 
-        setTimeout(type, typingSpeed);
+        typingTimeoutId = setTimeout(type, typingSpeed);
     }
 
     // Clear any existing typing and start fresh
@@ -145,7 +153,7 @@ function initTypingEffect() {
     phraseIndex = 0;
     isDeleting = false;
 
-    setTimeout(type, 1000);
+    typingTimeoutId = setTimeout(type, 1000);
 }
 
 /* ===================================
