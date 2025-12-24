@@ -28,6 +28,8 @@ function setLang(lang) {
     localStorage.setItem('lang', lang);
     // Restart typing effect
     initTypingEffect();
+    // Update meta tags for apps page
+    updateMetaTags(lang);
 }
 
 function closeEasterEgg() {
@@ -398,4 +400,97 @@ function throttle(func, limit) {
 // Add loaded class to body when page is fully loaded
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
+});
+
+/* ===================================
+   META TAGS LOCALIZATION
+   =================================== */
+function updateMetaTags(lang) {
+    // Only update if we're on apps.html
+    if (!window.location.pathname.includes('apps.html')) return;
+
+    const metaContent = {
+        tr: {
+            title: 'Uygulamalarım | Cihat Karaboga - iOS & Mobil Uygulamalar',
+            description: 'Cihat Karaboga tarafından geliştirilen mobil uygulamaları keşfedin. AI Seyahat Planlayıcı, QR Tarayıcı, Yarış Oyunları ve daha fazlası. App Store\'da mevcut.',
+            ogTitle: 'Uygulamalarım | Cihat Karaboga - iOS & Mobil Uygulamalar',
+            ogDescription: 'Cihat Karaboga tarafından geliştirilen mobil uygulamaları keşfedin. AI Seyahat Planlayıcı, QR Tarayıcı, Yarış Oyunları ve daha fazlası.',
+            twitterTitle: 'Uygulamalarım | Cihat Karaboga - iOS & Mobil Uygulamalar',
+            twitterDescription: 'Cihat Karaboga tarafından geliştirilen mobil uygulamaları keşfedin. AI Seyahat Planlayıcı, QR Tarayıcı, Yarış Oyunları ve daha fazlası.',
+            jsonLdName: 'Cihat Karaboga Tarafından Geliştirilen Mobil Uygulamalar',
+            jsonLdDescription: 'Cihat Karaboga tarafından geliştirilen iOS ve Android mobil uygulamalar portföyü'
+        },
+        en: {
+            title: 'My Apps | Cihat Karaboga - iOS & Mobile Applications',
+            description: 'Explore mobile applications developed by Cihat Karaboga. AI Travel Planner, QR Scanner, Racing Games and more. Available on App Store.',
+            ogTitle: 'My Apps | Cihat Karaboga - iOS & Mobile Applications',
+            ogDescription: 'Explore mobile applications developed by Cihat Karaboga. AI Travel Planner, QR Scanner, Racing Games and more.',
+            twitterTitle: 'My Apps | Cihat Karaboga - iOS & Mobile Applications',
+            twitterDescription: 'Explore mobile applications developed by Cihat Karaboga. AI Travel Planner, QR Scanner, Racing Games and more.',
+            jsonLdName: 'Mobile Applications by Cihat Karaboga',
+            jsonLdDescription: 'Portfolio of iOS and Android mobile applications developed by Cihat Karaboga'
+        }
+    };
+
+    const content = metaContent[lang] || metaContent.en;
+
+    // Update title
+    document.title = content.title;
+
+    // Update meta title
+    let metaTitle = document.querySelector('meta[name="title"]');
+    if (metaTitle) {
+        metaTitle.setAttribute('content', content.title);
+    }
+
+    // Update meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute('content', content.description);
+    }
+
+    // Update OG title
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+        ogTitle.setAttribute('content', content.ogTitle);
+    }
+
+    // Update OG description
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) {
+        ogDesc.setAttribute('content', content.ogDescription);
+    }
+
+    // Update Twitter title
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+        twitterTitle.setAttribute('content', content.twitterTitle);
+    }
+
+    // Update Twitter description
+    let twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDesc) {
+        twitterDesc.setAttribute('content', content.twitterDescription);
+    }
+
+    // Update JSON-LD structured data
+    const jsonLdScript = document.querySelector('script[type="application/ld+json"]');
+    if (jsonLdScript) {
+        try {
+            const jsonLd = JSON.parse(jsonLdScript.textContent);
+            jsonLd.name = content.jsonLdName;
+            jsonLd.description = content.jsonLdDescription;
+            jsonLdScript.textContent = JSON.stringify(jsonLd);
+        } catch (e) {
+            console.error('Error updating JSON-LD:', e);
+        }
+    }
+}
+
+// Initialize meta tags on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('lang') || document.documentElement.getAttribute('lang') || 'en';
+    if (window.location.pathname.includes('apps.html')) {
+        updateMetaTags(savedLang);
+    }
 });
