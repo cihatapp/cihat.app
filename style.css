@@ -613,170 +613,279 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     height: 20px;
 }
 
-/* Hero Apps Showcase - Mobile First */
+/* ===================================
+   HERO APPS SHOWCASE - Premium Design
+   =================================== */
+
+/* Main Container - Glass Card Effect */
 .hero-apps-showcase {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
     margin-left: auto;
     margin-right: auto;
-    padding: 1rem 1.25rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    text-decoration: none !important;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.08) 0%,
+        rgba(139, 92, 246, 0.05) 50%,
+        rgba(236, 72, 153, 0.03) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
     color: var(--text);
-    transition: all 0.3s ease;
     cursor: pointer;
-    position: relative;
-    overflow: visible;
-    width: auto;
-    max-width: 280px;
+    overflow: hidden;
+    max-width: 340px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Animated gradient border */
 .hero-apps-showcase::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--gradient-primary);
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.5) 0%,
+        rgba(139, 92, 246, 0.3) 50%,
+        rgba(236, 72, 153, 0.5) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+}
+
+/* Glow effect behind card */
+.hero-apps-showcase::after {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(59, 130, 246, 0.15) 0%,
+        transparent 50%
+    );
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: -1;
 }
 
-/* Active state for mobile touch feedback */
+/* Mobile touch feedback */
 .hero-apps-showcase:active {
-    transform: scale(0.98);
-    border-color: var(--accent);
+    transform: scale(0.97);
 }
 
-.hero-apps-showcase:active::before {
-    opacity: 0.1;
-}
-
+/* Label Section */
 .apps-showcase-label {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 500;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
     color: var(--text-secondary);
-    z-index: 1;
-    transition: color 0.3s ease;
-    text-align: center;
+    letter-spacing: 0.02em;
+    z-index: 2;
+    transition: all 0.4s ease;
+    white-space: nowrap;
 }
 
+/* Arrow Icon - Fixed Size */
 .apps-showcase-label .arrow-icon {
-    width: 16px !important;
-    height: 16px !important;
-    min-width: 16px !important;
-    max-width: 16px !important;
-    min-height: 16px !important;
-    max-height: 16px !important;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    max-width: 18px;
+    min-height: 18px;
+    max-height: 18px;
     stroke: var(--accent);
-    transition: transform 0.3s ease;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-    display: inline-block !important;
-    box-sizing: border-box !important;
-    overflow: visible;
+    stroke-width: 2.5;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
 }
 
+/* Floating Apps Container */
 .floating-apps {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem;
-    z-index: 1;
-    width: 100%;
+    gap: -8px;
+    z-index: 2;
+    padding: 0.5rem 0;
 }
 
+/* Individual App Icon */
 .floating-app {
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px;
-    min-height: 44px;
-    border-radius: 10px;
+    position: relative;
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    animation: floatApp 3s ease-in-out infinite;
+    background: var(--bg-card);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: floatApp 4s ease-in-out infinite;
     flex-shrink: 0;
-    display: block;
+    margin-left: -10px;
+}
+
+.floating-app:first-child {
+    margin-left: 0;
 }
 
 .floating-app img {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
 }
 
-.floating-app.app-1 { animation-delay: 0s; }
-.floating-app.app-2 { animation-delay: 0.3s; }
-.floating-app.app-3 { animation-delay: 0.6s; }
-.floating-app.app-4 { animation-delay: 0.9s; }
+/* Staggered floating animation */
+.floating-app.app-1 {
+    animation-delay: 0s;
+    z-index: 4;
+}
+.floating-app.app-2 {
+    animation-delay: 0.4s;
+    z-index: 3;
+}
+.floating-app.app-3 {
+    animation-delay: 0.8s;
+    z-index: 2;
+}
+.floating-app.app-4 {
+    animation-delay: 1.2s;
+    z-index: 1;
+}
 
+/* Floating animation keyframes */
 @keyframes floatApp {
     0%, 100% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-4px) rotate(1deg);
     }
     50% {
-        transform: translateY(-6px);
+        transform: translateY(-8px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-4px) rotate(-1deg);
     }
 }
 
-/* Apps showcase - tablet and up */
-@media (min-width: 480px) {
-    .hero-apps-showcase {
-        padding: 1.25rem 2rem;
-        gap: 1rem;
-        margin-top: 2rem;
-        max-width: 320px;
-    }
+/* ===================================
+   RESPONSIVE STYLES
+   =================================== */
 
-    .floating-apps {
-        gap: 0.5rem;
+/* Small phones */
+@media (max-width: 359px) {
+    .hero-apps-showcase {
+        padding: 1.25rem 1.5rem;
+        max-width: 280px;
     }
 
     .floating-app {
         width: 48px;
         height: 48px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        min-width: 48px;
+        min-height: 48px;
+        margin-left: -8px;
     }
 
     .apps-showcase-label {
-        font-size: 0.95rem;
-        gap: 0.75rem;
-    }
-
-    .apps-showcase-label .arrow-icon {
-        width: 18px !important;
-        height: 18px !important;
-        min-width: 18px !important;
-        max-width: 18px !important;
-        min-height: 18px !important;
-        max-height: 18px !important;
+        font-size: 0.85rem;
     }
 }
 
-/* Hover effects - only on devices with hover capability */
-@media (hover: hover) {
+/* Tablets and up */
+@media (min-width: 480px) {
+    .hero-apps-showcase {
+        padding: 1.75rem 2.5rem;
+        gap: 1.5rem;
+        max-width: 380px;
+    }
+
+    .floating-app {
+        width: 64px;
+        height: 64px;
+        min-width: 64px;
+        min-height: 64px;
+        border-radius: 16px;
+        margin-left: -12px;
+    }
+
+    .apps-showcase-label {
+        font-size: 1rem;
+        gap: 0.875rem;
+    }
+
+    .apps-showcase-label .arrow-icon {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        max-width: 20px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .hero-apps-showcase {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+        max-width: 420px;
+        gap: 2rem;
+    }
+
+    .floating-apps {
+        order: -1;
+    }
+}
+
+/* ===================================
+   HOVER EFFECTS (Pointer devices only)
+   =================================== */
+@media (hover: hover) and (pointer: fine) {
     .hero-apps-showcase:hover {
-        border-color: var(--accent);
-        transform: translateY(-4px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        transform: translateY(-6px);
+        border-color: rgba(59, 130, 246, 0.3);
+        box-shadow:
+            0 25px 50px rgba(0, 0, 0, 0.3),
+            0 0 100px rgba(59, 130, 246, 0.1);
     }
 
     .hero-apps-showcase:hover::before {
-        opacity: 0.1;
+        opacity: 1;
+    }
+
+    .hero-apps-showcase:hover::after {
+        opacity: 1;
     }
 
     .hero-apps-showcase:hover .apps-showcase-label {
@@ -784,18 +893,54 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     }
 
     .hero-apps-showcase:hover .arrow-icon {
-        transform: translateX(4px);
+        transform: translateX(6px);
+        stroke: var(--text);
     }
 
     .hero-apps-showcase:hover .floating-app {
-        transform: translateY(-6px) scale(1.1);
-        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+        animation-play-state: paused;
+        border-color: rgba(59, 130, 246, 0.3);
     }
 
-    .hero-apps-showcase:hover .floating-app.app-1 { transition-delay: 0s; }
-    .hero-apps-showcase:hover .floating-app.app-2 { transition-delay: 0.05s; }
-    .hero-apps-showcase:hover .floating-app.app-3 { transition-delay: 0.1s; }
-    .hero-apps-showcase:hover .floating-app.app-4 { transition-delay: 0.15s; }
+    .hero-apps-showcase:hover .floating-app.app-1 {
+        transform: translateY(-12px) scale(1.1) rotate(-3deg);
+        transition-delay: 0s;
+        z-index: 4;
+        box-shadow:
+            0 16px 32px rgba(59, 130, 246, 0.3),
+            0 0 0 1px rgba(59, 130, 246, 0.2);
+    }
+
+    .hero-apps-showcase:hover .floating-app.app-2 {
+        transform: translateY(-16px) scale(1.15) rotate(2deg);
+        transition-delay: 0.05s;
+        z-index: 5;
+        box-shadow:
+            0 20px 40px rgba(139, 92, 246, 0.3),
+            0 0 0 1px rgba(139, 92, 246, 0.2);
+    }
+
+    .hero-apps-showcase:hover .floating-app.app-3 {
+        transform: translateY(-14px) scale(1.12) rotate(-2deg);
+        transition-delay: 0.1s;
+        z-index: 4;
+        box-shadow:
+            0 18px 36px rgba(236, 72, 153, 0.3),
+            0 0 0 1px rgba(236, 72, 153, 0.2);
+    }
+
+    .hero-apps-showcase:hover .floating-app.app-4 {
+        transform: translateY(-10px) scale(1.08) rotate(3deg);
+        transition-delay: 0.15s;
+        z-index: 3;
+        box-shadow:
+            0 14px 28px rgba(59, 130, 246, 0.3),
+            0 0 0 1px rgba(59, 130, 246, 0.2);
+    }
+
+    .hero-apps-showcase:hover .floating-app img {
+        transform: scale(1.05);
+    }
 }
 
 /* Hero Visual */
@@ -1788,22 +1933,28 @@ a.info-value:hover {
 
     /* Hero Apps Showcase Mobile Fix */
     .hero-apps-showcase {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .floating-apps {
-        gap: 0.35rem;
+        max-width: calc(100% - 2rem);
+        padding: 1.25rem 1.5rem;
     }
 
     .floating-app {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        border-radius: 12px;
+        margin-left: -8px;
     }
 
     .apps-showcase-label {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .apps-showcase-label .arrow-icon {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        max-width: 16px;
     }
 
     .about-stats {
