@@ -943,6 +943,307 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     }
 }
 
+/* ===================================
+   APPS SHOWCASE SECTION (Standalone)
+   =================================== */
+.apps-showcase-section {
+    padding: 2rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.apps-showcase-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3rem;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.08) 0%,
+        rgba(139, 92, 246, 0.05) 50%,
+        rgba(236, 72, 153, 0.03) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: var(--text);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Animated gradient border */
+.apps-showcase-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.5) 0%,
+        rgba(139, 92, 246, 0.3) 50%,
+        rgba(236, 72, 153, 0.5) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+}
+
+/* Glow effect */
+.apps-showcase-card::after {
+    content: '';
+    position: absolute;
+    inset: -100%;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(59, 130, 246, 0.2) 0%,
+        transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.apps-showcase-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 20px 60px rgba(59, 130, 246, 0.15),
+        0 0 40px rgba(139, 92, 246, 0.1);
+}
+
+.apps-showcase-card:hover::before {
+    opacity: 1;
+}
+
+.apps-showcase-card:hover::after {
+    opacity: 1;
+}
+
+.apps-showcase-card:active {
+    transform: scale(0.98);
+}
+
+.apps-showcase-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    z-index: 2;
+}
+
+.floating-apps-grid {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.floating-apps-grid .floating-app {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: floatAppShowcase 4s ease-in-out infinite;
+    margin-left: -12px;
+}
+
+.floating-apps-grid .floating-app:first-child {
+    margin-left: 0;
+}
+
+.floating-apps-grid .floating-app img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Staggered animation delays */
+.floating-apps-grid .floating-app.app-1 {
+    animation-delay: 0s;
+    z-index: 4;
+}
+.floating-apps-grid .floating-app.app-2 {
+    animation-delay: 0.3s;
+    z-index: 3;
+}
+.floating-apps-grid .floating-app.app-3 {
+    animation-delay: 0.6s;
+    z-index: 2;
+}
+.floating-apps-grid .floating-app.app-4 {
+    animation-delay: 0.9s;
+    z-index: 1;
+}
+
+@keyframes floatAppShowcase {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-6px) rotate(1.5deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-6px) rotate(-1.5deg);
+    }
+}
+
+/* Hover effects on apps */
+.apps-showcase-card:hover .floating-app {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.apps-showcase-card:hover .floating-app img {
+    transform: scale(1.08);
+}
+
+.apps-showcase-card:hover .floating-app.app-1 {
+    transform: translateY(-8px) rotate(-3deg);
+}
+.apps-showcase-card:hover .floating-app.app-2 {
+    transform: translateY(-12px) rotate(2deg);
+}
+.apps-showcase-card:hover .floating-app.app-3 {
+    transform: translateY(-10px) rotate(-2deg);
+}
+.apps-showcase-card:hover .floating-app.app-4 {
+    transform: translateY(-6px) rotate(3deg);
+}
+
+.apps-showcase-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.apps-showcase-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.apps-showcase-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    transition: all 0.4s ease;
+}
+
+.apps-showcase-arrow svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent);
+    transition: transform 0.4s ease;
+}
+
+.apps-showcase-card:hover .apps-showcase-arrow {
+    background: var(--accent);
+}
+
+.apps-showcase-card:hover .apps-showcase-arrow svg {
+    stroke: white;
+    transform: translateX(4px);
+}
+
+.apps-showcase-card:hover .apps-showcase-label {
+    color: var(--accent);
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .apps-showcase-section {
+        padding: 1.5rem 0 3rem;
+    }
+
+    .apps-showcase-card {
+        padding: 1.5rem 2rem;
+    }
+
+    .apps-showcase-content {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .floating-apps-grid .floating-app {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        min-height: 56px;
+        margin-left: -10px;
+    }
+
+    .apps-showcase-label {
+        font-size: 1rem;
+    }
+
+    .apps-showcase-arrow {
+        width: 36px;
+        height: 36px;
+    }
+
+    .apps-showcase-arrow svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .apps-showcase-card {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .floating-apps-grid .floating-app {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        border-radius: 12px;
+        margin-left: -8px;
+    }
+
+    .apps-showcase-info {
+        gap: 0.75rem;
+    }
+
+    .apps-showcase-label {
+        font-size: 0.9rem;
+    }
+}
+
 /* Hero Visual */
 .hero-visual {
     position: absolute;
@@ -2398,6 +2699,456 @@ a.info-value:hover {
     }
 
     .app-features {
+        justify-content: center;
+    }
+}
+
+/* ===================================
+   FAQ SECTION
+   =================================== */
+.faq {
+    background: var(--bg);
+}
+
+.faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--border-hover);
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--accent);
+}
+
+.faq-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 24px 20px;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* ===================================
+   FLUTTER DEVELOPER PAGE
+   =================================== */
+.flutter-page .flutter-hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-height) + 60px);
+    padding-bottom: 60px;
+}
+
+.flutter-hero-content {
+    max-width: 700px;
+}
+
+.flutter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.flutter-icon-small {
+    flex-shrink: 0;
+}
+
+.flutter-hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.flutter-hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.flutter-hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Services Grid */
+.flutter-services {
+    background: var(--bg-elevated);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.service-card {
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-soft);
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+}
+
+.service-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent);
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Why Choose Grid */
+.flutter-why {
+    background: var(--bg);
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.why-card {
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.why-card:hover {
+    border-color: var(--accent);
+}
+
+.why-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.why-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.tech-stack {
+    text-align: center;
+}
+
+.tech-stack h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.tech-tag {
+    padding: 10px 20px;
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Flutter CTA */
+.flutter-cta {
+    background: var(--bg-elevated);
+}
+
+.flutter-cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.flutter-cta-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+}
+
+.flutter-cta-content p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 32px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===================================
+   BLOG PAGE
+   =================================== */
+.blog-page .blog-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-height) + 60px);
+    padding-bottom: 40px;
+}
+
+.blog-hero-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.blog-hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.blog-hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.blog-coming-soon {
+    background: var(--bg);
+}
+
+.coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 64px;
+}
+
+.coming-soon-card {
+    padding: 40px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.coming-soon-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+}
+
+.coming-soon-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    background: var(--accent-soft);
+    border-radius: var(--radius-lg);
+}
+
+.coming-soon-icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--accent);
+}
+
+.coming-soon-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.coming-soon-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.newsletter-section {
+    text-align: center;
+    padding: 48px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 48px;
+}
+
+.newsletter-section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.newsletter-section p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.social-follow {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-follow .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-home {
+    text-align: center;
+}
+
+/* ===================================
+   MOBILE RESPONSIVE - NEW SECTIONS
+   =================================== */
+@media (max-width: 768px) {
+    .faq-question {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+    }
+
+    .faq-answer {
+        padding: 0 20px 16px;
+    }
+
+    .flutter-hero-title {
+        font-size: 1.75rem;
+    }
+
+    .flutter-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .flutter-hero-cta {
+        flex-direction: column;
+    }
+
+    .flutter-hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .why-number {
+        font-size: 2rem;
+    }
+
+    .newsletter-section {
+        padding: 32px 24px;
+    }
+
+    .social-follow {
+        flex-direction: column;
+    }
+
+    .social-follow .btn {
+        width: 100%;
         justify-content: center;
     }
 }
