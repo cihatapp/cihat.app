@@ -1,4 +1,4 @@
-# robots.txt for cihat.app
+    # robots.txt for cihat.app
 # Cihat Karaboga - Software Engineer Portfolio
 
 # Sitemap location
@@ -17,6 +17,8 @@ Disallow: /*.json$
 Allow: /style.css
 Allow: /main.js
 Allow: /sitemap.xml
+Allow: /flutter-developer.html
+Allow: /blog.html
 
 # Googlebot specific
 User-agent: Googlebot
