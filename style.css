@@ -1047,6 +1047,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 
 .floating-apps-grid {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 0;
 }
