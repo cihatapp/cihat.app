@@ -31,6 +31,8 @@ function setLang(lang) {
     initTypingEffect();
     // Update meta tags for apps page
     updateMetaTags(lang);
+    // Update localized attributes
+    updateLocalizedAttributes(lang);
 }
 
 function closeEasterEgg() {
@@ -519,10 +521,111 @@ function updateMetaTags(lang) {
     }
 }
 
+/* ===================================
+   LOCALIZED ATTRIBUTES
+   =================================== */
+function updateLocalizedAttributes(lang) {
+    const translations = {
+        tr: {
+            'aria-label-toggle-theme': 'Temayı Değiştir',
+            'aria-label-toggle-menu': 'Menüyü Aç/Kapat',
+            'aria-label-github': 'GitHub',
+            'aria-label-linkedin': 'LinkedIn',
+            'aria-label-twitter': 'X (Twitter)',
+            'aria-label-view-apps': 'Uygulamalarımı Gör',
+            'alt-route-mind': 'Route Mind AI Seyahat Planlayıcı - Cihat Karaboga\'nın Flutter iOS Uygulaması',
+            'alt-topcu-bul': 'Topçu Bul Futbol Oyuncu Eşleştirme - Cihat Karaboga\'nın Flutter Sosyal Uygulaması',
+            'alt-turbo-traffic': 'Turbo Traffic Rush Yarış Oyunu - Cihat Karaboga\'nın Flutter Mobil Oyunu',
+            'alt-mobilematrix': 'MobileMatrix QR Tarayıcı - Cihat Karaboga\'nın Flutter Yardımcı Uygulaması',
+            'alt-route-mind-lg': 'Route Mind AI Seyahat Planlayıcı iOS Uygulama İkonu - Cihat Karaboga\'nın Flutter Uygulaması',
+            'alt-topcu-bul-lg': 'Topçu Bul Futbol Oyuncu Eşleştirme Uygulama İkonu - Cihat Karaboga\'nın Flutter Sosyal Uygulaması',
+            'alt-turbo-traffic-lg': 'Turbo Traffic Rush Yarış Oyunu Uygulama İkonu - Cihat Karaboga\'nın Flutter Oyunu',
+            'alt-mobilematrix-lg': 'MobileMatrix QR Tarayıcı ve Oluşturucu Uygulama İkonu - Cihat Karaboga\'nın Flutter Yardımcı Uygulaması',
+            'alt-mm-screenshot-1': 'MobileMatrix QR Tarayıcı ana ekran - Flutter uygulama arayüzü',
+            'alt-mm-screenshot-2': 'Özel tasarım seçenekleri ile MobileMatrix QR kodu oluşturucu',
+            'alt-mm-screenshot-3': 'MobileMatrix QR geçmiş ve analitik görünümü',
+            'jsonld-home': 'Ana Sayfa',
+            'jsonld-apps': 'Uygulamalar',
+            'jsonld-flutter-developer': 'Flutter Geliştirici',
+            'jsonld-blog': 'Blog'
+        },
+        en: {
+            'aria-label-toggle-theme': 'Toggle theme',
+            'aria-label-toggle-menu': 'Toggle menu',
+            'aria-label-github': 'GitHub',
+            'aria-label-linkedin': 'LinkedIn',
+            'aria-label-twitter': 'X (Twitter)',
+            'aria-label-view-apps': 'View My Apps',
+            'alt-route-mind': 'Route Mind AI Travel Planner - Flutter iOS App by Cihat Karaboga',
+            'alt-topcu-bul': 'Topçu Bul Football Player Matcher - Flutter Social App by Cihat Karaboga',
+            'alt-turbo-traffic': 'Turbo Traffic Rush Racing Game - Flutter Mobile Game by Cihat Karaboga',
+            'alt-mobilematrix': 'MobileMatrix QR Scanner - Flutter Utility App by Cihat Karaboga',
+            'alt-route-mind-lg': 'Route Mind AI Travel Planner iOS App Icon - Flutter App by Cihat Karaboga',
+            'alt-topcu-bul-lg': 'Topçu Bul Football Player Matcher App Icon - Flutter Social App by Cihat Karaboga',
+            'alt-turbo-traffic-lg': 'Turbo Traffic Rush Racing Game App Icon - Flutter Game by Cihat Karaboga',
+            'alt-mobilematrix-lg': 'MobileMatrix QR Scanner and Generator App Icon - Flutter Utility App by Cihat Karaboga',
+            'alt-mm-screenshot-1': 'MobileMatrix QR Scanner home screen - Flutter app interface',
+            'alt-mm-screenshot-2': 'MobileMatrix QR code generator with custom design options',
+            'alt-mm-screenshot-3': 'MobileMatrix QR history and analytics view',
+            'jsonld-home': 'Home',
+            'jsonld-apps': 'Apps',
+            'jsonld-flutter-developer': 'Flutter Developer',
+            'jsonld-blog': 'Blog'
+        }
+    };
+
+    const t = translations[lang] || translations.en;
+
+    // Update aria-labels
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria-label');
+        if (t[key]) {
+            el.setAttribute('aria-label', t[key]);
+        }
+    });
+
+    // Update alt attributes
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (t[key]) {
+            el.setAttribute('alt', t[key]);
+        }
+    });
+
+    // Update JSON-LD structured data
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(script => {
+        try {
+            const jsonLd = JSON.parse(script.textContent);
+            
+            // Update BreadcrumbList
+            if (jsonLd['@type'] === 'BreadcrumbList' && jsonLd.itemListElement) {
+                jsonLd.itemListElement.forEach((item, index) => {
+                    if (item.position === 1 && item.name === 'Home') {
+                        item.name = t['jsonld-home'];
+                    } else if (item.position === 2) {
+                        if (item.name === 'Apps') {
+                            item.name = t['jsonld-apps'];
+                        } else if (item.name === 'Flutter Developer') {
+                            item.name = t['jsonld-flutter-developer'];
+                        } else if (item.name === 'Blog') {
+                            item.name = t['jsonld-blog'];
+                        }
+                    }
+                });
+                script.textContent = JSON.stringify(jsonLd);
+            }
+        } catch (e) {
+            // Ignore JSON parse errors
+        }
+    });
+}
+
 // Initialize meta tags on page load
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('lang') || document.documentElement.getAttribute('lang') || 'en';
     if (window.location.pathname.includes('apps.html')) {
         updateMetaTags(savedLang);
     }
+    // Initialize localized attributes
+    updateLocalizedAttributes(savedLang);
 });
