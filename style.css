@@ -2613,7 +2613,7 @@ a.info-value:hover {
 /* ===================================
    APPS PAGE RESPONSIVE
    =================================== */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .apps-grid {
         grid-template-columns: 1fr;
         max-width: 600px;
@@ -2629,9 +2629,7 @@ a.info-value:hover {
     .app-name {
         font-size: 1.25rem;
     }
-}
 
-@media (max-width: 768px) {
     .apps-hero {
         min-height: 40vh;
         padding-top: calc(var(--nav-height) + 2rem);
