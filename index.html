@@ -7,8 +7,8 @@
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="Cihat Karaboga | Flutter Developer Istanbul - Mobile App Development">
-    <meta name="description" content="Cihat Karaboga - Expert Flutter Developer in Istanbul, Turkey. 4+ years building high-performance iOS & Android mobile apps. Hire a professional mobil uygulama gelistirici.">
-    <meta name="keywords" content="Cihat Karaboga, cihat dev, cihat flutter, cihatapp, Flutter Developer Turkey, flutter developer istanbul, flutter gelistirici, mobil uygulama gelistirici, mobile application developer, Dart Developer, iOS Developer, Android Developer, Cross-platform Developer, Software Engineer Istanbul, Turkey Mobile Developer, Mobile App Development, BLoC, Riverpod, cihat yazilimci, flutter dev, freelance flutter developer, hire flutter developer turkey">
+    <meta name="description" content="Cihat Karaboga - Expert Flutter Developer in Istanbul, Turkey. 4+ years building high-performance iOS & Android mobile apps. Hire a professional mobil uygulama geliştirici.">
+    <meta name="keywords" content="Cihat Karaboga, cihat dev, cihat flutter, cihatapp, Flutter Developer Turkey, flutter developer istanbul, flutter geliştirici, mobil uygulama geliştirici, mobile application developer, Dart Developer, iOS Developer, Android Developer, Cross-platform Developer, Software Engineer Istanbul, Turkey Mobile Developer, Mobile App Development, BLoC, Riverpod, cihat yazılımcı, flutter dev, freelance flutter developer, hire flutter developer turkey">
     <meta name="author" content="Cihat Karaboga">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
@@ -74,7 +74,7 @@
         "@type": "Person",
         "@id": "https://cihat.app/#person",
         "name": "Cihat Karaboga",
-        "alternateName": ["Cihat Karaboga", "cihat dev", "cihat flutter", "cihatapp", "Cihat K.", "cihat developer", "flutter gelistirici"],
+        "alternateName": ["Cihat Karaboga", "cihat dev", "cihat flutter", "cihatapp", "Cihat K.", "cihat developer", "flutter geliştirici"],
         "url": "https://cihat.app",
         "image": "https://cihat.app/og-image.png",
         "description": "Expert Flutter Developer and Software Engineer based in Istanbul, Turkey. Specialist in cross-platform mobile application development for iOS and Android platforms with 4+ years of experience.",
@@ -157,7 +157,7 @@
             "@id": "https://cihat.app/#person"
         },
         "dateCreated": "2024-01-01T00:00:00+00:00",
-        "dateModified": "2025-12-28T00:00:00+00:00"
+        "dateModified": "2026-01-16T00:00:00+00:00"
     }
     </script>
 
@@ -215,10 +215,10 @@
             },
             {
                 "@type": "Question",
-                "name": "Flutter gelistirici olarak hangi hizmetleri sunuyorsunuz?",
+                "name": "Flutter geliştirici olarak hangi hizmetleri sunuyorsunuz?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "iOS ve Android icin cross-platform mobil uygulama gelistirme, mevcut uygulamalarin Flutter'a donusturulmesi, Firebase entegrasyonu, API gelistirme, UI/UX tasarimi ve uygulama bakimi hizmetleri sunuyorum."
+                    "text": "iOS ve Android için cross-platform mobil uygulama geliştirme, mevcut uygulamaların Flutter'a dönüştürülmesi, Firebase entegrasyonu, API geliştirme, UI/UX tasarımı ve uygulama bakımı hizmetleri sunuyorum."
                 }
             }
         ]
@@ -260,6 +260,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- Preload critical fonts for faster LCP -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500&display=swap" as="style" fetchpriority="high">
 
     <!-- Google Fonts - Space Grotesk + Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -271,8 +275,8 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Stylesheet - High priority for faster render -->
+    <link rel="stylesheet" href="style.css" fetchpriority="high">
 
     <!-- Prevent flash of wrong theme -->
     <script>
@@ -291,14 +295,17 @@
     </script>
 </head>
 <body>
+    <!-- Skip to main content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Floating Particles Background -->
-    <div class="particles" id="particles"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
 
     <!-- Cursor Glow Effect -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <a href="#hero" class="nav-logo">
             <span class="logo-text">CK</span>
             <span class="logo-dot"></span>
@@ -442,16 +449,16 @@
                 <div class="apps-showcase-content">
                     <div class="floating-apps-grid">
                         <div class="floating-app app-1">
-                            <img src="assets/apps/route-mind.jpg" data-i18n-alt="alt-route-mind" alt="Route Mind AI Travel Planner - Flutter iOS App by Cihat Karaboga" loading="lazy">
+                            <img src="assets/apps/route-mind.jpg" data-i18n-alt="alt-route-mind" alt="Route Mind AI Travel Planner - Flutter iOS App by Cihat Karaboga" width="120" height="120" loading="lazy" decoding="async">
                         </div>
                         <div class="floating-app app-2">
-                            <img src="assets/apps/topcu-bul.jpg" data-i18n-alt="alt-topcu-bul" alt="Topçu Bul Football Player Matcher - Flutter Social App by Cihat Karaboga" loading="lazy">
+                            <img src="assets/apps/topcu-bul.jpg" data-i18n-alt="alt-topcu-bul" alt="Topcu Bul Football Player Matcher - Flutter Social App by Cihat Karaboga" width="120" height="120" loading="lazy" decoding="async">
                         </div>
                         <div class="floating-app app-3">
-                            <img src="assets/apps/turbo-traffic.jpg" data-i18n-alt="alt-turbo-traffic" alt="Turbo Traffic Rush Racing Game - Flutter Mobile Game by Cihat Karaboga" loading="lazy">
+                            <img src="assets/apps/turbo-traffic.jpg" data-i18n-alt="alt-turbo-traffic" alt="Turbo Traffic Rush Racing Game - Flutter Mobile Game by Cihat Karaboga" width="120" height="120" loading="lazy" decoding="async">
                         </div>
                         <div class="floating-app app-4">
-                            <img src="assets/apps/mobilematrix.jpg" data-i18n-alt="alt-mobilematrix" alt="MobileMatrix QR Scanner - Flutter Utility App by Cihat Karaboga" loading="lazy">
+                            <img src="assets/apps/mobilematrix.jpg" data-i18n-alt="alt-mobilematrix" alt="MobileMatrix QR Scanner - Flutter Utility App by Cihat Karaboga" width="120" height="120" loading="lazy" decoding="async">
                         </div>
                     </div>
                     <div class="apps-showcase-info">
