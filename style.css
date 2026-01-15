@@ -34,10 +34,10 @@
     --bg-card: #161616;
     --bg-glass: rgba(10, 10, 10, 0.9);
 
-    /* Text Colors */
+    /* Text Colors - WCAG AA compliant */
     --text: #ffffff;
-    --text-secondary: #a0a0a0;
-    --text-muted: #666666;
+    --text-secondary: #b0b0b0;
+    --text-muted: #8a8a8a;
 
     /* Border Colors */
     --border: #1f1f1f;
@@ -57,7 +57,7 @@
     --error: #ef4444;
 
     /* Gradients - Simplified */
-    --gradient-text: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+    --gradient-text: linear-gradient(135deg, #ffffff 0%, #b0b0b0 100%);
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, transparent 100%);
 
     /* Shadows - Clean, no glow */
@@ -82,7 +82,7 @@
 
     --text: #0a0a0a;
     --text-secondary: #4b5563;
-    --text-muted: #9ca3af;
+    --text-muted: #6b7280;
 
     --border: #e5e7eb;
     --border-hover: #d1d5db;
