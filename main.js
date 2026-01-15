@@ -1,18 +1,36 @@
 /* ===================================
    cihat.app - Interactive JavaScript
    Smooth Animations & Interactions
+   Updated: 2026 - Modern Browser APIs
    =================================== */
+
+// Feature detection
+const supportsViewTransitions = 'startViewTransition' in document;
+const supportsIdleCallback = 'requestIdleCallback' in window;
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
+    // Critical: Run immediately
     initNavigation();
     initTypingEffect();
-    initParticles();
-    initCursorGlow();
-    initScrollAnimations();
-    initSkillBars();
-    initCounterAnimation();
-    initFAQAccordion();
+    initViewTransitions();
+
+    // Non-critical: Use idle callback for better performance
+    const nonCriticalInit = () => {
+        initParticles();
+        initCursorGlow();
+        initScrollAnimations();
+        initSkillBars();
+        initCounterAnimation();
+        initFAQAccordion();
+    };
+
+    if (supportsIdleCallback) {
+        requestIdleCallback(nonCriticalInit, { timeout: 2000 });
+    } else {
+        // Fallback for Safari
+        setTimeout(nonCriticalInit, 100);
+    }
 });
 
 // Global functions for inline handlers
@@ -38,6 +56,41 @@ function setLang(lang) {
 function closeEasterEgg() {
     const overlay = document.getElementById('easter-egg-overlay');
     if (overlay) overlay.classList.remove('active');
+}
+
+/* ===================================
+   VIEW TRANSITIONS API
+   =================================== */
+function initViewTransitions() {
+    if (!supportsViewTransitions) return;
+
+    // Whitelist of known internal pages for safe navigation (SEO-friendly URLs)
+    const internalPages = ['/', '/apps/', '/blog/', '/flutter-developer/'];
+
+    // Intercept navigation to internal pages for smooth transitions
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+        // Only handle same-origin links
+        if (link.hostname && link.hostname !== window.location.hostname) return;
+
+        const href = link.getAttribute('href');
+        const basePath = href.split('#')[0]; // Remove hash for matching
+
+        // Only handle whitelisted internal pages
+        if (!internalPages.includes(basePath)) return;
+
+        link.addEventListener('click', (e) => {
+            // Skip if modifier key is pressed
+            if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+
+            e.preventDefault();
+
+            // Use CSS View Transitions API for smooth navigation
+            document.startViewTransition(() => {
+                // Navigate after transition starts
+                window.location.href = href;
+            });
+        });
+    });
 }
 
 /* ===================================
@@ -275,7 +328,7 @@ function initScrollAnimations() {
 
     // Observe all elements with reveal class
     document.querySelectorAll('.reveal').forEach((el, index) => {
-        el.style.transitionDelay = `${index * 0.05}s`;
+        el.style.transitionDelay = `${index * 0.02}s`;
         observer.observe(el);
     });
 
@@ -435,6 +488,44 @@ function throttle(func, limit) {
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
+
+/* ===================================
+   MODERN SCROLL ENHANCEMENTS
+   =================================== */
+// Use scrollend event for better scroll handling (Chrome 114+, Firefox 109+)
+if ('onscrollend' in window) {
+    let scrollEndTimeout;
+    window.addEventListener('scrollend', () => {
+        // Update active nav link based on scroll position
+        updateActiveNavOnScroll();
+    });
+} else {
+    // Fallback for browsers without scrollend
+    window.addEventListener('scroll', debounce(() => {
+        updateActiveNavOnScroll();
+    }, 100));
+}
+
+function updateActiveNavOnScroll() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}
 
 /* ===================================
    META TAGS LOCALIZATION
