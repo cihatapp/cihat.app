@@ -11,7 +11,7 @@ Allow: /
 # Block development/hidden files
 Disallow: /ee.js
 Disallow: /.emro_hidden
-Disallow: /*.json$
+Disallow: /*.json
 
 # Allow important resources
 Allow: /style.css
