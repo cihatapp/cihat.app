@@ -2,77 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-    <!-- Main Page -->
+    <!-- Main Page - Portfolio Homepage -->
     <url>
         <loc>https://cihat.app/</loc>
-        <lastmod>2025-12-27</lastmod>
+        <lastmod>2026-01-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
-        <!-- Bilingual support -->
         <xhtml:link rel="alternate" hreflang="en" href="https://cihat.app/"/>
         <xhtml:link rel="alternate" hreflang="tr" href="https://cihat.app/"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://cihat.app/"/>
     </url>
 
-    <!-- Apps Page -->
+    <!-- Apps Page - Published Mobile Applications -->
     <url>
-        <loc>https://cihat.app/apps.html</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://cihat.app/apps/</loc>
+        <lastmod>2026-01-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cihat.app/apps.html"/>
-        <xhtml:link rel="alternate" hreflang="tr" href="https://cihat.app/apps.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cihat.app/apps/"/>
+        <xhtml:link rel="alternate" hreflang="tr" href="https://cihat.app/apps/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://cihat.app/apps/"/>
     </url>
 
-    <!-- Flutter Developer Page -->
+    <!-- Flutter Developer Page - Services Landing Page -->
     <url>
-        <loc>https://cihat.app/flutter-developer.html</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://cihat.app/flutter-developer/</loc>
+        <lastmod>2026-01-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cihat.app/flutter-developer.html"/>
-        <xhtml:link rel="alternate" hreflang="tr" href="https://cihat.app/flutter-developer.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cihat.app/flutter-developer/"/>
+        <xhtml:link rel="alternate" hreflang="tr" href="https://cihat.app/flutter-developer/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://cihat.app/flutter-developer/"/>
     </url>
 
-    <!-- Blog Page -->
+    <!-- Blog Page - Development Insights -->
     <url>
-        <loc>https://cihat.app/blog.html</loc>
-        <lastmod>2025-12-27</lastmod>
+        <loc>https://cihat.app/blog/</loc>
+        <lastmod>2026-01-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="en" href="https://cihat.app/blog.html"/>
-        <xhtml:link rel="alternate" hreflang="tr" href="https://cihat.app/blog.html"/>
-    </url>
-
-    <!-- Section anchors for better indexing -->
-    <url>
-        <loc>https://cihat.app/#about</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://cihat.app/#experience</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://cihat.app/#skills</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://cihat.app/#faq</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
-        <loc>https://cihat.app/#contact</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://cihat.app/blog/"/>
+        <xhtml:link rel="alternate" hreflang="tr" href="https://cihat.app/blog/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://cihat.app/blog/"/>
     </url>
 
 </urlset>
