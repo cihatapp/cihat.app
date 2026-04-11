@@ -503,29 +503,6 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     overflow: hidden;
 }
 
-.hero-badge::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -6px;
-    width: 6px;
-    height: 6px;
-    background: var(--accent-warm);
-    border-radius: 50%;
-    transform: translateY(-50%);
-    animation: hot-reload-dot 4s ease-in-out infinite;
-}
-
-@keyframes hot-reload-dot {
-    0%, 100% { left: -6px; opacity: 0; }
-    10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
-    100% { left: 100%; opacity: 0; }
-}
-
-.badge-glow {
-    display: none;
-}
 
 /* Hero Title */
 .hero-title {
