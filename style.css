@@ -25,88 +25,88 @@
 }
 :root,
 [data-theme="dark"] {
-    /* Color Palette - "Bosphorus Twilight" */
-    --accent-hue: 268;
+    /* Color Palette - "Engineering Precision" */
+    --accent-hue: 164;
 
-    /* Background Colors - Warm blacks */
-    --bg: #09090b;
-    --bg-elevated: #111114;
-    --bg-card: #16161a;
-    --bg-glass: rgba(9, 9, 11, 0.92);
+    /* Background Colors - True blacks */
+    --bg: #0a0a0a;
+    --bg-elevated: #111111;
+    --bg-card: #161616;
+    --bg-glass: rgba(10, 10, 10, 0.92);
 
-    /* Text Colors - WCAG AA compliant, subtle lavender tint */
-    --text: #f0f0f5;
-    --text-secondary: #a8a8b8;
-    --text-muted: #68687a;
+    /* Text Colors - Warm off-white for readability */
+    --text: #ededed;
+    --text-secondary: #999999;
+    --text-muted: #666666;
 
     /* Border Colors */
-    --border: #1f1f22;
-    --border-hover: #333338;
+    --border: #1c1c1c;
+    --border-hover: #2a2a2a;
 
-    /* Primary Accent: Indigo-Violet (Bosphorus twilight) */
-    --accent: #7c5bf5;
-    --accent-hover: #6a4be0;
-    --accent-light: #a78bfa;
-    --accent-soft: rgba(124, 91, 245, 0.12);
+    /* Single Accent: Mint Teal */
+    --accent: #5de4c7;
+    --accent-hover: #4dd4b7;
+    --accent-light: #7eecd5;
+    --accent-soft: rgba(93, 228, 199, 0.10);
 
-    /* Secondary Accent: Warm Amber (Istanbul skyline lights) */
-    --accent-warm: #e0a050;
-    --accent-warm-soft: rgba(224, 160, 80, 0.12);
+    /* Warm variant (subtle, used sparingly) */
+    --accent-warm: #5de4c7;
+    --accent-warm-soft: rgba(93, 228, 199, 0.08);
 
     /* Brand Colors */
     --flutter: #02569B;
     --flutter-light: #47C5FB;
-    --success: #10b981;
-    --warning: #f59e0b;
+    --success: #5de4c7;
+    --warning: #f0c050;
     --error: #ef4444;
 
     /* Gradients */
-    --gradient-text: linear-gradient(135deg, #f0f0f5 0%, #a8a8b8 50%, #b4a0d4 100%);
+    --gradient-text: linear-gradient(135deg, #ededed 0%, #999999 100%);
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, transparent 100%);
-    --gradient-accent: linear-gradient(135deg, #7c5bf5, #9b59b6, #e0a050);
+    --gradient-accent: linear-gradient(135deg, #5de4c7, #4dd4b7);
 
-    /* Shadows - Clean, no glow */
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
 
     /* Misc */
     --nav-height: 72px;
     --radius-sm: 8px;
     --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 28px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
     --radius-full: 9999px;
 }
 
 [data-theme="light"] {
-    --bg: #fafafc;
+    --bg: #fafafa;
     --bg-elevated: #ffffff;
     --bg-card: #ffffff;
-    --bg-glass: rgba(250, 250, 252, 0.95);
+    --bg-glass: rgba(250, 250, 250, 0.95);
 
-    --text: #0a0a12;
-    --text-secondary: #4a4a5e;
-    --text-muted: #6a6a80;
+    --text: #0a0a0a;
+    --text-secondary: #555555;
+    --text-muted: #888888;
 
-    --border: #e5e5ed;
-    --border-hover: #d1d1db;
+    --border: #e6e6e6;
+    --border-hover: #cccccc;
 
-    --accent: #6246d4;
-    --accent-hover: #5538c0;
-    --accent-light: #8b6fef;
-    --accent-soft: rgba(98, 70, 212, 0.08);
+    --accent: #0d9373;
+    --accent-hover: #0a7d62;
+    --accent-light: #10b981;
+    --accent-soft: rgba(13, 147, 115, 0.08);
 
-    --accent-warm: #c88a3c;
-    --accent-warm-soft: rgba(200, 138, 60, 0.08);
+    --accent-warm: #0d9373;
+    --accent-warm-soft: rgba(13, 147, 115, 0.06);
 
-    --gradient-text: linear-gradient(135deg, #0a0a12 0%, #4a4a5e 100%);
+    --gradient-text: linear-gradient(135deg, #0a0a0a 0%, #555555 100%);
     --gradient-card: linear-gradient(145deg, rgba(0,0,0,0.01) 0%, transparent 100%);
-    --gradient-accent: linear-gradient(135deg, #6246d4, #8854c0, #c88a3c);
+    --gradient-accent: linear-gradient(135deg, #0d9373, #0a7d62);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* ===================================
@@ -136,6 +136,7 @@
         background: var(--bg);
         color: var(--text);
         line-height: 1.6;
+        letter-spacing: -0.01em;
         overflow-x: hidden;
         transition: background-color 0.4s ease, color 0.4s ease;
 
@@ -146,7 +147,7 @@
     }
 
     ::selection {
-        background: rgba(124, 91, 245, 0.3);
+        background: rgba(93, 228, 199, 0.3);
         color: var(--text);
     }
 
@@ -529,19 +530,17 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 /* Hero Title */
 .hero-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
     font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
+    letter-spacing: -0.05em;
+    line-height: 1.05;
     margin-bottom: 1.5rem;
 }
 
 .hero-name {
     display: block;
-    background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 60%, var(--accent-warm) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text);
+    -webkit-text-fill-color: var(--text);
     position: relative;
 }
 
@@ -620,7 +619,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 .btn-primary:hover {
     background: var(--accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(124, 91, 245, 0.2);
+    box-shadow: 0 6px 20px rgba(93, 228, 199, 0.2);
 }
 
 .btn-outline {
@@ -715,7 +714,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: rgba(124, 91, 245, 0.4);
+    background: rgba(93, 228, 199, 0.4);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -735,7 +734,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     inset: -50%;
     background: radial-gradient(
         circle at 50% 50%,
-        rgba(124, 91, 245, 0.15) 0%,
+        rgba(93, 228, 199, 0.15) 0%,
         transparent 50%
     );
     opacity: 0;
@@ -930,10 +929,10 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 @media (hover: hover) and (pointer: fine) {
     .hero-apps-showcase:hover {
         transform: translateY(-6px);
-        border-color: rgba(124, 91, 245, 0.3);
+        border-color: rgba(93, 228, 199, 0.3);
         box-shadow:
             0 25px 50px rgba(0, 0, 0, 0.3),
-            0 0 100px rgba(124, 91, 245, 0.1);
+            0 0 100px rgba(93, 228, 199, 0.1);
     }
 
     .hero-apps-showcase:hover::before {
@@ -955,7 +954,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 
     .hero-apps-showcase:hover .floating-app {
         animation-play-state: paused;
-        border-color: rgba(124, 91, 245, 0.3);
+        border-color: rgba(93, 228, 199, 0.3);
     }
 
     .hero-apps-showcase:hover .floating-app.app-1 {
@@ -963,8 +962,8 @@ html[lang="en"] .lang-btn[data-lang="en"] {
         transition-delay: 0s;
         z-index: 4;
         box-shadow:
-            0 16px 32px rgba(124, 91, 245, 0.3),
-            0 0 0 1px rgba(124, 91, 245, 0.2);
+            0 16px 32px rgba(93, 228, 199, 0.3),
+            0 0 0 1px rgba(93, 228, 199, 0.2);
     }
 
     .hero-apps-showcase:hover .floating-app.app-2 {
@@ -972,8 +971,8 @@ html[lang="en"] .lang-btn[data-lang="en"] {
         transition-delay: 0.05s;
         z-index: 5;
         box-shadow:
-            0 20px 40px rgba(124, 91, 245, 0.25),
-            0 0 0 1px rgba(124, 91, 245, 0.15);
+            0 20px 40px rgba(93, 228, 199, 0.25),
+            0 0 0 1px rgba(93, 228, 199, 0.15);
     }
 
     .hero-apps-showcase:hover .floating-app.app-3 {
@@ -981,8 +980,8 @@ html[lang="en"] .lang-btn[data-lang="en"] {
         transition-delay: 0.1s;
         z-index: 4;
         box-shadow:
-            0 18px 36px rgba(124, 91, 245, 0.2),
-            0 0 0 1px rgba(124, 91, 245, 0.12);
+            0 18px 36px rgba(93, 228, 199, 0.2),
+            0 0 0 1px rgba(93, 228, 199, 0.12);
     }
 
     .hero-apps-showcase:hover .floating-app.app-4 {
@@ -990,8 +989,8 @@ html[lang="en"] .lang-btn[data-lang="en"] {
         transition-delay: 0.15s;
         z-index: 3;
         box-shadow:
-            0 14px 28px rgba(124, 91, 245, 0.3),
-            0 0 0 1px rgba(124, 91, 245, 0.2);
+            0 14px 28px rgba(93, 228, 199, 0.3),
+            0 0 0 1px rgba(93, 228, 199, 0.2);
     }
 
     .hero-apps-showcase:hover .floating-app img {
@@ -1035,7 +1034,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-    background: rgba(124, 91, 245, 0.4);
+    background: rgba(93, 228, 199, 0.4);
     -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
@@ -1055,7 +1054,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     inset: -100%;
     background: radial-gradient(
         circle at 50% 50%,
-        rgba(124, 91, 245, 0.2) 0%,
+        rgba(93, 228, 199, 0.2) 0%,
         transparent 50%
     );
     opacity: 0;
@@ -1067,7 +1066,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 .apps-showcase-card:hover {
     transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 60px rgba(124, 91, 245, 0.2);
+    box-shadow: 0 20px 60px rgba(93, 228, 199, 0.2);
 }
 
 .apps-showcase-card:hover::before {
@@ -1163,7 +1162,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow:
         0 12px 32px rgba(0, 0, 0, 0.4),
-        0 0 20px rgba(124, 91, 245, 0.2);
+        0 0 20px rgba(93, 228, 199, 0.2);
 }
 
 .apps-showcase-card:hover .floating-app img {
@@ -1370,7 +1369,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 .wb-3 {
     height: 80px;
     background: var(--accent-warm-soft);
-    border: 1px solid rgba(224, 160, 80, 0.2);
+    border: 1px solid rgba(93, 228, 199, 0.2);
     animation-delay: 1.4s;
 }
 
@@ -1384,7 +1383,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
 .wb-5 {
     height: 44px;
     background: var(--accent-soft);
-    border: 1px solid rgba(124, 91, 245, 0.2);
+    border: 1px solid rgba(93, 228, 199, 0.2);
     animation-delay: 2.0s;
     margin-top: auto;
     border-radius: 12px;
@@ -1490,7 +1489,8 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
 }
 
 .section-subtitle {
@@ -1555,15 +1555,7 @@ html[lang="en"] .lang-btn[data-lang="en"] {
     transform: translateY(-2px);
 }
 
-/* Subtle color differentiation per stat */
-.stat-item:nth-child(2) .stat-number,
-.stat-item:nth-child(2) .stat-suffix {
-    color: var(--accent-warm);
-}
-.stat-item:nth-child(3) .stat-number,
-.stat-item:nth-child(3) .stat-static {
-    color: var(--success);
-}
+/* All stats use single accent */
 .stat-item:nth-child(4) {
     border-style: dashed;
     cursor: pointer;
@@ -1864,11 +1856,9 @@ a.info-value:hover {
     border-color: var(--border-hover);
 }
 
-/* Each category gets a unique left-border accent */
-.skill-category:nth-child(1) { border-left: 3px solid var(--accent); }
-.skill-category:nth-child(2) { border-left: 3px solid var(--flutter-light); }
-.skill-category:nth-child(3) { border-left: 3px solid var(--accent-warm); }
-.skill-category:nth-child(4) { border-left: 3px solid var(--success); }
+/* Left-border accent on all categories */
+.skill-category { border-left: 2px solid var(--border); }
+.skill-category:hover { border-left-color: var(--accent); }
 
 .skill-category-header {
     display: flex;
@@ -1995,7 +1985,7 @@ a.info-value:hover {
 
 /* Advanced: subtle accent tint */
 .skill-tag[data-level="advanced"] {
-    border-color: rgba(124, 91, 245, 0.3);
+    border-color: rgba(93, 228, 199, 0.3);
     color: var(--text);
 }
 
@@ -2042,10 +2032,8 @@ a.info-value:hover {
     transform: translateY(-2px);
 }
 
-/* Subtle brand-colored left border on hover */
-.contact-card:nth-child(1):hover { border-left-color: var(--accent-warm); }
-.contact-card:nth-child(2):hover { border-left-color: #0A66C2; }
-.contact-card:nth-child(3):hover { border-left-color: var(--text-secondary); }
+/* Accent border on hover */
+.contact-card:hover { border-color: var(--border-hover); }
 
 .contact-icon {
     width: 56px;
@@ -2189,7 +2177,7 @@ a.info-value:hover {
 }
 
 .footer-location {
-    color: var(--accent-warm);
+    color: var(--text-muted);
 }
 
 .footer-bottom p {
