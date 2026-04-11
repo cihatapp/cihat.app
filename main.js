@@ -226,27 +226,25 @@ function initParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
 
-    const particleCount = 30;
+    const symbols = ['{', '}', '<', '/>', ';', '=>', '()', '[]', '::'];
+    const particleCount = 20;
 
     for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
+        const particle = document.createElement('span');
         particle.className = 'particle';
+        particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
 
         // Random position
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.top = `${Math.random() * 100}%`;
 
-        // Random size
-        const size = Math.random() * 4 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-
-        // Random animation delay and duration
+        // Random animation timing
         particle.style.animationDelay = `${Math.random() * 20}s`;
-        particle.style.animationDuration = `${15 + Math.random() * 15}s`;
+        particle.style.animationDuration = `${20 + Math.random() * 20}s`;
 
-        // Random opacity
-        particle.style.opacity = `${0.1 + Math.random() * 0.3}`;
+        // Random opacity and size
+        particle.style.opacity = `${0.04 + Math.random() * 0.08}`;
+        particle.style.fontSize = `${10 + Math.random() * 6}px`;
 
         container.appendChild(particle);
     }
