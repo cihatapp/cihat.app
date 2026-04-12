@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
         initSkillBars();
         initCounterAnimation();
         initFAQAccordion();
+        initContactForm();
+        initFormPlaceholders();
     };
 
     if (supportsIdleCallback) {
@@ -718,3 +720,129 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize localized attributes
     updateLocalizedAttributes(savedLang);
 });
+
+/* ===================================
+   CONTACT FORM
+   =================================== */
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Clear previous errors
+        form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+        const name = form.querySelector('#contactName');
+        const email = form.querySelector('#contactEmail');
+        const project = form.querySelector('#contactProject');
+        const budget = form.querySelector('#contactBudget');
+        const message = form.querySelector('#contactMessage');
+
+        // Validation
+        let valid = true;
+        const lang = document.documentElement.getAttribute('lang') || 'en';
+
+        if (!name.value.trim()) {
+            name.classList.add('error');
+            valid = false;
+        }
+
+        if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+            email.classList.add('error');
+            valid = false;
+        }
+
+        if (!project.value) {
+            project.classList.add('error');
+            valid = false;
+        }
+
+        if (!message.value.trim()) {
+            message.classList.add('error');
+            valid = false;
+        }
+
+        if (!valid) return;
+
+        // Build mailto
+        const projectLabel = project.options[project.selectedIndex].getAttribute(lang === 'tr' ? 'data-tr' : 'data-en') || project.options[project.selectedIndex].text;
+        const budgetLabel = budget.value ? budget.options[budget.selectedIndex].text : (lang === 'tr' ? 'Belirtilmedi' : 'Not specified');
+
+        const subject = encodeURIComponent(
+            lang === 'tr'
+                ? `Proje Talebi: ${projectLabel} — ${name.value.trim()}`
+                : `Project Inquiry: ${projectLabel} — ${name.value.trim()}`
+        );
+
+        const body = encodeURIComponent(
+            [
+                lang === 'tr' ? `Merhaba Cihat,` : `Hi Cihat,`,
+                '',
+                message.value.trim(),
+                '',
+                '---',
+                `${lang === 'tr' ? 'İsim' : 'Name'}: ${name.value.trim()}`,
+                `${lang === 'tr' ? 'E-posta' : 'Email'}: ${email.value.trim()}`,
+                `${lang === 'tr' ? 'Proje Tipi' : 'Project Type'}: ${projectLabel}`,
+                `${lang === 'tr' ? 'Bütçe' : 'Budget'}: ${budgetLabel}`,
+            ].join('\n')
+        );
+
+        window.location.href = `mailto:cihattkaraboga@gmail.com?subject=${subject}&body=${body}`;
+
+        // Brief success feedback using textContent (safe, no XSS risk)
+        const btn = form.querySelector('.form-submit');
+        const btnText = btn.querySelector('.btn-text');
+        const btnIcon = btn.querySelector('.btn-icon');
+        const trSpan = btnText.querySelector('.tr');
+        const enSpan = btnText.querySelector('.en');
+        const origTr = trSpan.textContent;
+        const origEn = enSpan.textContent;
+
+        trSpan.textContent = 'E-posta Açılıyor...';
+        enSpan.textContent = 'Opening Email...';
+        if (btnIcon) btnIcon.style.display = 'none';
+        btn.style.pointerEvents = 'none';
+
+        setTimeout(() => {
+            trSpan.textContent = origTr;
+            enSpan.textContent = origEn;
+            if (btnIcon) btnIcon.style.display = '';
+            btn.style.pointerEvents = '';
+        }, 3000);
+    });
+
+    // Clear error on input
+    form.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => {
+        el.addEventListener('input', () => el.classList.remove('error'));
+        el.addEventListener('change', () => el.classList.remove('error'));
+    });
+}
+
+/* ===================================
+   FORM PLACEHOLDERS (Bilingual)
+   =================================== */
+function initFormPlaceholders() {
+    const updatePlaceholders = () => {
+        const lang = document.documentElement.getAttribute('lang') || 'en';
+        document.querySelectorAll('[data-placeholder-tr][data-placeholder-en]').forEach(el => {
+            el.placeholder = el.getAttribute(lang === 'tr' ? 'data-placeholder-tr' : 'data-placeholder-en');
+        });
+        // Update select options text
+        document.querySelectorAll('select option[data-tr][data-en]').forEach(opt => {
+            opt.text = opt.getAttribute(lang === 'tr' ? 'data-tr' : 'data-en');
+        });
+    };
+
+    updatePlaceholders();
+
+    // Re-run on language change
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach(m => {
+            if (m.attributeName === 'lang') updatePlaceholders();
+        });
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+}
